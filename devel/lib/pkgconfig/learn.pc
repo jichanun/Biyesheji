@@ -1,0 +1,8 @@
+prefix=/home/jichanun/catin_ws/devel
+
+Name: learn
+Description: Description of learn
+Version: 0.0.0
+Cflags: -I/home/jichanun/catin_ws/devel/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs roscpp std_msgs turtlesim message_runtime

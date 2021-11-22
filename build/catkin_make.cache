@@ -1,0 +1,2 @@
+beginner_tutorials:learn
+-DCATKIN_DEVEL_PREFIX=/home/jichanun/catin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/jichanun/catin_ws/install -G Unix Makefiles

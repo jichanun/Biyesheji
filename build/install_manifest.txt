@@ -1,0 +1,13 @@
+/home/jichanun/catin_ws/install/_setup_util.py
+/home/jichanun/catin_ws/install/env.sh
+/home/jichanun/catin_ws/install/setup.bash
+/home/jichanun/catin_ws/install/local_setup.bash
+/home/jichanun/catin_ws/install/setup.sh
+/home/jichanun/catin_ws/install/local_setup.sh
+/home/jichanun/catin_ws/install/setup.zsh
+/home/jichanun/catin_ws/install/local_setup.zsh
+/home/jichanun/catin_ws/install/.rosinstall
+/home/jichanun/catin_ws/install/lib/pkgconfig/beginner_tutorials.pc
+/home/jichanun/catin_ws/install/share/beginner_tutorials/cmake/beginner_tutorialsConfig.cmake
+/home/jichanun/catin_ws/install/share/beginner_tutorials/cmake/beginner_tutorialsConfig-version.cmake
+/home/jichanun/catin_ws/install/share/beginner_tutorials/package.xml
