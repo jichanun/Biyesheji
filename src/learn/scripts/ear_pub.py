@@ -31,10 +31,11 @@ expect_info_pub = rospy.Publisher('/expect_info', expectp, queue_size=50)
 
 def ActualInfoCallback(msg):
     rospy.loginfo("Caculater received  actual Info: X:%f  Y:%f ",  msg.x[0], msg.y[0])
-    Caculate()
+    Caculate(msg)
     exp = expectp()
     exp.x[0] =QJBL.S.idealX
     exp.y[0]=QJBL.S.idealY
+    print(exp)
     # 发布消息
     expect_info_pub.publish(exp)
     #rospy.loginfo("Publsh person message[%f, %f]", exp.x[0], exp.y[0])    
@@ -56,17 +57,16 @@ def velocity_publisher():
         
 
 
-def Caculate():
+def Caculate(msg):
 #for (XX) in range (80,120):
     data = np.zeros(13)
-    X=8
-    Y=8
+
     # 输入：QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD就是AUV当前的X、Y和深度，0，0，0暂时不用管，9，9，1就是目标点的X、Y和深度
     #if data[-1]>0 and data[-1]<6:
         #print(data)
         #print(data[int(data[-1])*2+2])
-      #  X = data[int(data[-1])*2+2]
-      #  Y = data[int(data[-1])*2+3]
+    X = msg.x[0]
+    Y = msg.y[0]#自己是几就输入几号
 
     D=1#随便设的自身位置
     #QJBL.M.M3D[3:5,1:3,]=1
@@ -78,13 +78,15 @@ def Caculate():
     QJBL.F[str(3)].setFLocation(data[8],data[9],1,0,0)
     QJBL.F[str(4)].setFLocation(data[10],data[11],1,0,0)
     QJBL.T.setTLocation(9,9,1,0,0)
+
     print("X,Y=%F %F "% (X,Y))
-    #PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
+    print(QJBL.T.nowTX)
+    PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
     # 输出：QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD也是期望的AUV当前的X、Y和深度
-    [DVX,DVY]=PPW.WBF(X,Y,QJBL.T.nowTX,QJBL.T.nowTY)
-    [QJBL.S.idealX,QJBL.S.idealY]=PPW.WB(X,Y,DVX,DVY)
-    X += (QJBL.S.idealX-X)*0.3
-    Y += (QJBL.S.idealY-Y)*0.3
+
+    #[DVX,DVY]=PPW.WBF(X,Y,QJBL.T.nowTX,QJBL.T.nowTY)
+    #[QJBL.S.idealX,QJBL.S.idealY]=PPW.WB(X,Y,DVX,DVY)
+
     
 
    # print(QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD)

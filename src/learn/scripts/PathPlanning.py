@@ -58,8 +58,8 @@ class PathPlanning():
             FTx,FTy,FTd = self.FT(nx, ny, nd, ntx, nty, ntd)#引力场
             FOx,FOy,FOd = self.FO(nx, ny, nd)#躲避障碍，如果没有就输出0
             FBx,FBy,FBd = self.FB(nx, ny, nd)#躲避碰撞，返回一个值？TODO:上面三个返回的是啥
-            Vx = self.FYtoV * (FOx  + FBx)
-            Vy = self.FYtoV * (FOy  + FBy)
+            Vx = self.FYtoV * (FTx + FOx  + FBx)
+            Vy = self.FYtoV * (FTy+FOy  + FBy)
             Vd = self.FDtoV * (FOd + FTd + FBd)#速度*误差？TODO:是不是误差待考
             VY = (Vx ** 2 + Vy ** 2) ** 0.5#平面移动速度
             if VY > self.maxSpeedY:
@@ -176,7 +176,7 @@ class PathPlanning():
     # AUV间避碰调节函数
     def FBFunction(self, da, d):
         fb = math.tanh(2.645-3.9675*(d/self.safeDIS))/2 + 0.5;
-        print ("fb=%f" %fb)
+        #print ("fb=%f" %fb)
         fb = da/d*fb
         return fb
 
