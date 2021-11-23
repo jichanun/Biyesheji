@@ -6,6 +6,9 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 
+#define HAS_STM32  0
+
+
 ToRosUnion ReceiveData,TransmitData;
 void ExpectCallback(const learn::expectp::ConstPtr& msg)
 {
@@ -19,7 +22,17 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
     }
     TransmitData.vars.status=10;
     ROS_INFO ("Serial received from caculater :x %.2f ,y : %.2f ", msg->x[0],msg->y[0]);
-
+    #if HAS_STM32
+    #else
+    for (int i =0;i<6;i++)
+    {    
+        ToRosUnion temp;
+        temp.vars.px[i]=TransmitData.vars.px[i]-ReceiveData.vars.px[i];
+        temp.vars.py[i]=TransmitData.vars.py[i]-ReceiveData.vars.px[i];
+        ReceiveData.vars.px[i]+=0.3*temp.vars.px[i];
+        ReceiveData.vars.py[i]+=0.3*temp.vars.py[i];
+    }
+    #endif
 }
 
 
@@ -41,7 +54,7 @@ int main(int argc, char** argv)
     sp.setBaudrate(115200);
     //串口设置timeout
     sp.setTimeout(to);
- 
+ #if HAS_STM32
     try
     {
         //打开串口
@@ -63,12 +76,16 @@ int main(int argc, char** argv)
         return -1;
     }
 
+#else
+    ROS_INFO_STREAM("DEBUG MODE ");
+#endif
 
-    ros::Rate loop_rate(50);
+    ros::Rate loop_rate(1);
     while(ros::ok())
     {
         //获取缓冲区内的字节数
         size_t n = sp.available();
+#if  HAS_STM32
         if(n!=0)
         {
             uint8_t buffer[60];
@@ -113,6 +130,17 @@ int main(int argc, char** argv)
 
             //把数据发送回去
         }
+#else
+        ReceiveData.vars.data0=300;
+            learn::vision Act;
+            for (int i=0;i<6;i++){
+                Act.x[i]=ReceiveData.vars.px[i];
+                Act.y[i]=ReceiveData.vars.py[i];
+                
+            }
+            Acutal.publish(Act);
+#endif
+
         ros::spinOnce();
         loop_rate.sleep();
     }
