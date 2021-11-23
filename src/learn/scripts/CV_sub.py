@@ -13,10 +13,6 @@ import math
 import numpy as np
 import time
 import serial #导入serial包
-a=1
-def DoSomething():
-    #node()
-    print(a)
 
 def node():
     #rospy.init_node("serial_test") #初始化ros节点
@@ -38,14 +34,11 @@ def node():
 
 
 def ActualInfoCallback(msg):
-    rospy.loginfo("CV received Actual position: X:%f  Y:%f ", 
-			  msg.x[0], msg.y[0])
-    DoSomething()
-    
+    #rospy.loginfo("CV received Actual position: X:%f  Y:%f ", msg.x[0], msg.y[0])
+    pass
 def ExpectInfoCallback(msg):
-    rospy.loginfo("CV received Expected position x:%f y:%f",
-                        msg.x[0],msg.y[0])
-    DoSomething()
+    #rospy.loginfo("CV received Expected position x:%f y:%f", msg.x[0],msg.y[0])
+    pass
 def person_subscriber():
 	# ROS节点初始化
     rospy.init_node('CV_sub', anonymous=True)

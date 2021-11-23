@@ -21,7 +21,9 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
         TransmitData.vars.py[i]=msg->y[i];
     }
     TransmitData.vars.status=10;
-    ROS_INFO ("Serial received from caculater :x %.2f ,y : %.2f ", msg->x[0],msg->y[0]);
+    ROS_INFO ("The expeted position of all the robots are:");
+    for (int i =0;i<6;i++)
+        ROS_INFO ("Robot ID : %d x: %.2f ,y : %.2f ",i, msg->x[i],msg->y[i]);
     #if HAS_STM32
     #else
     for (int i =0;i<6;i++)
@@ -138,6 +140,9 @@ int main(int argc, char** argv)
                 Act.y[i]=ReceiveData.vars.py[i];
                 
             }
+            printf("All actual position are:\n");
+            for (int k=0;k<6;k++)
+                printf("Number : %d  , X:  %.2f ,   Y :  %.2f\n", k , Act.x[k],Act.y[k]);
             Acutal.publish(Act);
 #endif
 

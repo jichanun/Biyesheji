@@ -30,12 +30,11 @@ PPW= PathPlanningWB.PathPlanning(5, 1, 0.5, 0.2, 0.5, 3, 0, 0.5, 1, 0)
 expect_info_pub = rospy.Publisher('/expect_info', expectp, queue_size=50)
 
 def ActualInfoCallback(msg):
-    rospy.loginfo("Caculater received  actual Info: X:%f  Y:%f ",  msg.x[0], msg.y[0])
+    #rospy.loginfo("Caculater received  actual Info: X:%f  Y:%f ",  msg.x[0], msg.y[0])
     Caculate(msg)
     exp = expectp()
     exp.x[0] =QJBL.S.idealX
     exp.y[0]=QJBL.S.idealY
-    print(exp)
     # 发布消息
     expect_info_pub.publish(exp)
     #rospy.loginfo("Publsh person message[%f, %f]", exp.x[0], exp.y[0])    
@@ -79,8 +78,8 @@ def Caculate(msg):
     QJBL.F[str(4)].setFLocation(data[10],data[11],1,0,0)
     QJBL.T.setTLocation(9,9,1,0,0)
 
-    print("X,Y=%F %F "% (X,Y))
-    print(QJBL.T.nowTX)
+    #print("X,Y=%F %F "% (X,Y))
+    #print(QJBL.T.nowTX)
     PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
     # 输出：QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD也是期望的AUV当前的X、Y和深度
 
