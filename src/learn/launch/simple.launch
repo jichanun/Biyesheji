@@ -1,5 +1,5 @@
 <launch>
-    <node pkg="learn" type="ear_sub.py" name="listener" output="screen" />
+    <node pkg="learn" type="stm_com" name="listener" output="screen" />
     <node pkg="learn" type="ear_pub.py" name="speaker" output="screen" /> 
     <node pkg="learn" type="CV_sub.py" name="viewer" output="screen" /> 
 </launch>

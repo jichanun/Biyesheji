@@ -108,6 +108,7 @@ pose_subscriber_EXTERNAL_OBJECTS =
 /home/jichanun/catin_ws/devel/lib/learn/pose_subscriber: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 /home/jichanun/catin_ws/devel/lib/learn/pose_subscriber: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/jichanun/catin_ws/devel/lib/learn/pose_subscriber: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
+/home/jichanun/catin_ws/devel/lib/learn/pose_subscriber: /opt/ros/melodic/lib/libserial.so
 /home/jichanun/catin_ws/devel/lib/learn/pose_subscriber: learn/CMakeFiles/pose_subscriber.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/jichanun/catin_ws/devel/lib/learn/pose_subscriber"
 	cd /home/jichanun/catin_ws/build/learn && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pose_subscriber.dir/link.txt --verbose=$(VERBOSE)

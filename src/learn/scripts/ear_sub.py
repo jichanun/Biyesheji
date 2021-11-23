@@ -8,7 +8,7 @@
 #该函数定时运行，定时向机器人进行通信
 
 #仿真说明：使用某种方式替换掉串口模块，在Expect回调函数中更新机器人的实际位置
-
+#仿真使用：注释掉ser的初始化，并注释主函数，解除回调函数并注释上面的发送函数
 
 from rosgraph.names import anonymous_name
 import rospy
@@ -19,19 +19,19 @@ import math
 import numpy as np
 from struct import pack, unpack
 import serial #导入serial包
-
+import time
 def Simulation_test(Expect_test,Actual_test):
     Error_test = vision()
     Actual_out = vision()
     for i in range (5):
         Error_test.x[i]= Expect_test.x[i] - Actual_test.x[i]
         Error_test.y[i]= Expect_test.y[i] - Actual_test.y[i]
-        Actual_out.x[i]=Actual_test.x[i]+Error_test.x[i]*0.3
-        Actual_out.y[i]=Actual_test.y[i]+Error_test.y[i]*0.3
+        Actual_out.x[i]=Actual_test.x[i]+Error_test.x[i]*0.1
+        Actual_out.y[i]=Actual_test.y[i]+Error_test.y[i]*0.1
 
     return Actual_out
 
-#ser = serial.Serial("/dev/ttyACM0", 115200, timeout=1) #打开串口, 端口号:"/dev/ttyUSB0". 波特率:9600. 延时等待1s
+ser = serial.Serial("/dev/ttyACM0", 9600, timeout=1) #打开串口, 端口号:"/dev/ttyUSB0". 波特率:9600. 延时等待1s
 
 def node():
 
@@ -98,7 +98,10 @@ def send2algGH(R1_x, R1_y, R2_x, R2_y,R3_x, R3_y, R4_x, R4_y):
     send_data.append(chr(R4_y_byte[0]).encode('latin1'))
     print("len is %d"%len(send_data))
     for  i in range(len(send_data)):
+        send_data[i]=0xff
+        print(send_data[i])
         ser.write(send_data[i])
+        time.sleep(0.01)
     #ser.write(send_data)#看看这里会不会产生16个中断
 
 
@@ -107,14 +110,14 @@ Actual =  rospy.Publisher('/actual_info',vision,queue_size=50)
 Act=vision()
 def ExpectInfoCallback(msg):
     rospy.loginfo("Serial received  expect position Info: x:%f  y:%f", msg.x[0], msg.y[0])
-    #send2algGH( msg.x[0], msg.y[0], msg.x[1], msg.y[1], msg.x[2], msg.y[2], msg.x[3], msg.y[3])#串口通信
-
+    send2algGH( msg.x[0], msg.y[0], msg.x[1], msg.y[1], msg.x[2], msg.y[2], msg.x[3], msg.y[3])#串口通信
+    '''仿真使用
     global Act
     Act=Simulation_test(msg,Act)#数据仿真
     rospy.loginfo("All Actual position Received :::::/r/n  ")
     for i in range(0,6):
         rospy.loginfo("Number  %d   : X=%f , Y=%f /n", i,Act.x[i],Act.y[i])
-
+#'''
 
 
     rospy.loginfo("Serial sended to STM32 ")
@@ -146,32 +149,31 @@ def recv(cnt):
 def person_subscriber():
 	# ROS节点初始化
     rospy.init_node('ear_sub', anonymous=True)
-    rate = rospy.Rate(5) 
+    rate = rospy.Rate(1) 
 	# 创建一个Subscriber，订阅名为/person_info的topic，注册回调函数personInfoCallback
     rospy.Subscriber("/expect_info", expectp,ExpectInfoCallback)
 
-    #node()#开启节点
+    node()#开启节点
 
 
     while not rospy.is_shutdown():
-        '''
+       # '''
         #仿真注释
         ser.write('h'.encode())#发送hello
         print("hello")
         cnt = ser.inWaiting() #等待接受数据
+        Act=vision()
         if cnt > 0 : #接受数据量大于0
             data1= recv(cnt)#解码
             print("count is %d "%cnt)
-            Act=vision()
             rospy.loginfo("All Actual position Received :::::/r/n  ")
             for i in range(0,6):
                 Act.x[i]=data1[i*2+2]
                 Act.y[i]=data1[i*2+3]#六个机器人的坐标集
                 rospy.loginfo("Number  %d   : X=%f , Y=%f /n", i,Act.x[i],Act.y[i])
-'''
+#'''
 
         Actual.publish(Act)            #发布消息
-
 
 
         rate.sleep()#延时

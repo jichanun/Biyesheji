@@ -480,6 +480,32 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named earphone_subscriber
+
+# Build rule for target.
+earphone_subscriber: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 earphone_subscriber
+.PHONY : earphone_subscriber
+
+# fast build rule for target.
+earphone_subscriber/fast:
+	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/build
+.PHONY : earphone_subscriber/fast
+
+#=============================================================================
+# Target rules for targets named earp_publisher
+
+# Build rule for target.
+earp_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 earp_publisher
+.PHONY : earp_publisher
+
+# fast build rule for target.
+earp_publisher/fast:
+	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/build
+.PHONY : earp_publisher/fast
+
+#=============================================================================
 # Target rules for targets named std_srvs_generate_messages_py
 
 # Build rule for target.
@@ -753,19 +779,6 @@ _learn_generate_messages_check_deps_vision/fast:
 .PHONY : _learn_generate_messages_check_deps_vision/fast
 
 #=============================================================================
-# Target rules for targets named earp_publisher
-
-# Build rule for target.
-earp_publisher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 earp_publisher
-.PHONY : earp_publisher
-
-# fast build rule for target.
-earp_publisher/fast:
-	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/build
-.PHONY : earp_publisher/fast
-
-#=============================================================================
 # Target rules for targets named _learn_generate_messages_check_deps_earphone
 
 # Build rule for target.
@@ -805,6 +818,19 @@ learn_generate_messages_eus/fast:
 .PHONY : learn_generate_messages_eus/fast
 
 #=============================================================================
+# Target rules for targets named ser
+
+# Build rule for target.
+ser: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ser
+.PHONY : ser
+
+# fast build rule for target.
+ser/fast:
+	$(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/build
+.PHONY : ser/fast
+
+#=============================================================================
 # Target rules for targets named learn_gencpp
 
 # Build rule for target.
@@ -842,19 +868,6 @@ velocity_publisher: cmake_check_build_system
 velocity_publisher/fast:
 	$(MAKE) -f learn/CMakeFiles/velocity_publisher.dir/build.make learn/CMakeFiles/velocity_publisher.dir/build
 .PHONY : velocity_publisher/fast
-
-#=============================================================================
-# Target rules for targets named earphone_subscriber
-
-# Build rule for target.
-earphone_subscriber: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 earphone_subscriber
-.PHONY : earphone_subscriber
-
-# fast build rule for target.
-earphone_subscriber/fast:
-	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/build
-.PHONY : earphone_subscriber/fast
 
 #=============================================================================
 # Target rules for targets named learn_geneus
@@ -947,6 +960,19 @@ learn_genpy/fast:
 	$(MAKE) -f learn/CMakeFiles/learn_genpy.dir/build.make learn/CMakeFiles/learn_genpy.dir/build
 .PHONY : learn_genpy/fast
 
+#=============================================================================
+# Target rules for targets named stm_com
+
+# Build rule for target.
+stm_com: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stm_com
+.PHONY : stm_com
+
+# fast build rule for target.
+stm_com/fast:
+	$(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/build
+.PHONY : stm_com/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -984,6 +1010,8 @@ help:
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... earphone_subscriber"
+	@echo "... earp_publisher"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... _learn_generate_messages_check_deps_expectp"
 	@echo "... std_srvs_generate_messages_lisp"
@@ -1005,14 +1033,13 @@ help:
 	@echo "... learn_generate_messages_py"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... _learn_generate_messages_check_deps_vision"
-	@echo "... earp_publisher"
 	@echo "... _learn_generate_messages_check_deps_earphone"
 	@echo "... learn_generate_messages_cpp"
 	@echo "... learn_generate_messages_eus"
+	@echo "... ser"
 	@echo "... learn_gencpp"
 	@echo "... turtlesim_generate_messages_eus"
 	@echo "... velocity_publisher"
-	@echo "... earphone_subscriber"
 	@echo "... learn_geneus"
 	@echo "... learn_genlisp"
 	@echo "... learn_generate_messages_nodejs"
@@ -1020,6 +1047,7 @@ help:
 	@echo "... person_publisher"
 	@echo "... learn_gennodejs"
 	@echo "... learn_genpy"
+	@echo "... stm_com"
 .PHONY : help
 
 

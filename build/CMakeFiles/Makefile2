@@ -920,17 +920,21 @@ clean: beginner_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/clean
 # Directory level rules for directory learn
 
 # Convenience name for "all" pass in the directory.
+learn/all: learn/CMakeFiles/earphone_subscriber.dir/all
+learn/all: learn/CMakeFiles/earp_publisher.dir/all
 learn/all: learn/CMakeFiles/person_subscriber.dir/all
 learn/all: learn/CMakeFiles/learn_generate_messages.dir/all
-learn/all: learn/CMakeFiles/earp_publisher.dir/all
+learn/all: learn/CMakeFiles/ser.dir/all
 learn/all: learn/CMakeFiles/velocity_publisher.dir/all
-learn/all: learn/CMakeFiles/earphone_subscriber.dir/all
 learn/all: learn/CMakeFiles/pose_subscriber.dir/all
 learn/all: learn/CMakeFiles/person_publisher.dir/all
+learn/all: learn/CMakeFiles/stm_com.dir/all
 
 .PHONY : learn/all
 
 # Convenience name for "clean" pass in the directory.
+learn/clean: learn/CMakeFiles/earphone_subscriber.dir/clean
+learn/clean: learn/CMakeFiles/earp_publisher.dir/clean
 learn/clean: learn/CMakeFiles/std_srvs_generate_messages_py.dir/clean
 learn/clean: learn/CMakeFiles/_learn_generate_messages_check_deps_expectp.dir/clean
 learn/clean: learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/clean
@@ -952,14 +956,13 @@ learn/clean: learn/CMakeFiles/_learn_generate_messages_check_deps_Person.dir/cle
 learn/clean: learn/CMakeFiles/learn_generate_messages_py.dir/clean
 learn/clean: learn/CMakeFiles/std_srvs_generate_messages_nodejs.dir/clean
 learn/clean: learn/CMakeFiles/_learn_generate_messages_check_deps_vision.dir/clean
-learn/clean: learn/CMakeFiles/earp_publisher.dir/clean
 learn/clean: learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/clean
 learn/clean: learn/CMakeFiles/learn_generate_messages_cpp.dir/clean
 learn/clean: learn/CMakeFiles/learn_generate_messages_eus.dir/clean
+learn/clean: learn/CMakeFiles/ser.dir/clean
 learn/clean: learn/CMakeFiles/learn_gencpp.dir/clean
 learn/clean: learn/CMakeFiles/turtlesim_generate_messages_eus.dir/clean
 learn/clean: learn/CMakeFiles/velocity_publisher.dir/clean
-learn/clean: learn/CMakeFiles/earphone_subscriber.dir/clean
 learn/clean: learn/CMakeFiles/learn_geneus.dir/clean
 learn/clean: learn/CMakeFiles/learn_genlisp.dir/clean
 learn/clean: learn/CMakeFiles/learn_generate_messages_nodejs.dir/clean
@@ -967,6 +970,7 @@ learn/clean: learn/CMakeFiles/pose_subscriber.dir/clean
 learn/clean: learn/CMakeFiles/person_publisher.dir/clean
 learn/clean: learn/CMakeFiles/learn_gennodejs.dir/clean
 learn/clean: learn/CMakeFiles/learn_genpy.dir/clean
+learn/clean: learn/CMakeFiles/stm_com.dir/clean
 
 .PHONY : learn/clean
 
@@ -974,6 +978,80 @@ learn/clean: learn/CMakeFiles/learn_genpy.dir/clean
 learn/preinstall:
 
 .PHONY : learn/preinstall
+
+#=============================================================================
+# Target rules for target learn/CMakeFiles/earphone_subscriber.dir
+
+# All Build rule for target.
+learn/CMakeFiles/earphone_subscriber.dir/all: learn/CMakeFiles/learn_generate_messages_cpp.dir/all
+	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/depend
+	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=3,4 "Built target earphone_subscriber"
+.PHONY : learn/CMakeFiles/earphone_subscriber.dir/all
+
+# Include target in all.
+all: learn/CMakeFiles/earphone_subscriber.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+learn/CMakeFiles/earphone_subscriber.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 6
+	$(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earphone_subscriber.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 0
+.PHONY : learn/CMakeFiles/earphone_subscriber.dir/rule
+
+# Convenience name for target.
+earphone_subscriber: learn/CMakeFiles/earphone_subscriber.dir/rule
+
+.PHONY : earphone_subscriber
+
+# clean rule for target.
+learn/CMakeFiles/earphone_subscriber.dir/clean:
+	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/clean
+.PHONY : learn/CMakeFiles/earphone_subscriber.dir/clean
+
+# clean rule for target.
+clean: learn/CMakeFiles/earphone_subscriber.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target learn/CMakeFiles/earp_publisher.dir
+
+# All Build rule for target.
+learn/CMakeFiles/earp_publisher.dir/all: learn/CMakeFiles/learn_generate_messages_cpp.dir/all
+	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/depend
+	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=1,2 "Built target earp_publisher"
+.PHONY : learn/CMakeFiles/earp_publisher.dir/all
+
+# Include target in all.
+all: learn/CMakeFiles/earp_publisher.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+learn/CMakeFiles/earp_publisher.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 6
+	$(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earp_publisher.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 0
+.PHONY : learn/CMakeFiles/earp_publisher.dir/rule
+
+# Convenience name for target.
+earp_publisher: learn/CMakeFiles/earp_publisher.dir/rule
+
+.PHONY : earp_publisher
+
+# clean rule for target.
+learn/CMakeFiles/earp_publisher.dir/clean:
+	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/clean
+.PHONY : learn/CMakeFiles/earp_publisher.dir/clean
+
+# clean rule for target.
+clean: learn/CMakeFiles/earp_publisher.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Target rules for target learn/CMakeFiles/std_srvs_generate_messages_py.dir
@@ -1670,43 +1748,6 @@ clean: learn/CMakeFiles/_learn_generate_messages_check_deps_vision.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target learn/CMakeFiles/earp_publisher.dir
-
-# All Build rule for target.
-learn/CMakeFiles/earp_publisher.dir/all: learn/CMakeFiles/learn_generate_messages_cpp.dir/all
-	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/depend
-	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=1,2 "Built target earp_publisher"
-.PHONY : learn/CMakeFiles/earp_publisher.dir/all
-
-# Include target in all.
-all: learn/CMakeFiles/earp_publisher.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-learn/CMakeFiles/earp_publisher.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earp_publisher.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 0
-.PHONY : learn/CMakeFiles/earp_publisher.dir/rule
-
-# Convenience name for target.
-earp_publisher: learn/CMakeFiles/earp_publisher.dir/rule
-
-.PHONY : earp_publisher
-
-# clean rule for target.
-learn/CMakeFiles/earp_publisher.dir/clean:
-	$(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/clean
-.PHONY : learn/CMakeFiles/earp_publisher.dir/clean
-
-# clean rule for target.
-clean: learn/CMakeFiles/earp_publisher.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
 # Target rules for target learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir
 
 # All Build rule for target.
@@ -1811,6 +1852,43 @@ clean: learn/CMakeFiles/learn_generate_messages_eus.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target learn/CMakeFiles/ser.dir
+
+# All Build rule for target.
+learn/CMakeFiles/ser.dir/all:
+	$(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/depend
+	$(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=44,45 "Built target ser"
+.PHONY : learn/CMakeFiles/ser.dir/all
+
+# Include target in all.
+all: learn/CMakeFiles/ser.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+learn/CMakeFiles/ser.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/ser.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 0
+.PHONY : learn/CMakeFiles/ser.dir/rule
+
+# Convenience name for target.
+ser: learn/CMakeFiles/ser.dir/rule
+
+.PHONY : ser
+
+# clean rule for target.
+learn/CMakeFiles/ser.dir/clean:
+	$(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/clean
+.PHONY : learn/CMakeFiles/ser.dir/clean
+
+# clean rule for target.
+clean: learn/CMakeFiles/ser.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target learn/CMakeFiles/learn_gencpp.dir
 
 # All Build rule for target.
@@ -1881,7 +1959,7 @@ clean: learn/CMakeFiles/turtlesim_generate_messages_eus.dir/clean
 learn/CMakeFiles/velocity_publisher.dir/all:
 	$(MAKE) -f learn/CMakeFiles/velocity_publisher.dir/build.make learn/CMakeFiles/velocity_publisher.dir/depend
 	$(MAKE) -f learn/CMakeFiles/velocity_publisher.dir/build.make learn/CMakeFiles/velocity_publisher.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=44,45 "Built target velocity_publisher"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=48,49 "Built target velocity_publisher"
 .PHONY : learn/CMakeFiles/velocity_publisher.dir/all
 
 # Include target in all.
@@ -1908,43 +1986,6 @@ learn/CMakeFiles/velocity_publisher.dir/clean:
 
 # clean rule for target.
 clean: learn/CMakeFiles/velocity_publisher.dir/clean
-
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target learn/CMakeFiles/earphone_subscriber.dir
-
-# All Build rule for target.
-learn/CMakeFiles/earphone_subscriber.dir/all: learn/CMakeFiles/learn_generate_messages_cpp.dir/all
-	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/depend
-	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=3,4 "Built target earphone_subscriber"
-.PHONY : learn/CMakeFiles/earphone_subscriber.dir/all
-
-# Include target in all.
-all: learn/CMakeFiles/earphone_subscriber.dir/all
-
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-learn/CMakeFiles/earphone_subscriber.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 6
-	$(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earphone_subscriber.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 0
-.PHONY : learn/CMakeFiles/earphone_subscriber.dir/rule
-
-# Convenience name for target.
-earphone_subscriber: learn/CMakeFiles/earphone_subscriber.dir/rule
-
-.PHONY : earphone_subscriber
-
-# clean rule for target.
-learn/CMakeFiles/earphone_subscriber.dir/clean:
-	$(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/clean
-.PHONY : learn/CMakeFiles/earphone_subscriber.dir/clean
-
-# clean rule for target.
-clean: learn/CMakeFiles/earphone_subscriber.dir/clean
 
 .PHONY : clean
 
@@ -2183,6 +2224,78 @@ learn/CMakeFiles/learn_genpy.dir/clean:
 
 # clean rule for target.
 clean: learn/CMakeFiles/learn_genpy.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target learn/CMakeFiles/stm_com.dir
+
+# All Build rule for target.
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/roscpp_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/roscpp_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/roscpp_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/std_msgs_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/roscpp_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/std_msgs_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/std_msgs_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/std_msgs_generate_messages_nodejs.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/roscpp_generate_messages_nodejs.dir/all
+learn/CMakeFiles/stm_com.dir/all: beginner_tutorials/CMakeFiles/std_msgs_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/std_srvs_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/std_srvs_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/turtlesim_generate_messages_nodejs.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/std_srvs_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/turtlesim_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/learn_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/turtlesim_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/turtlesim_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/learn_generate_messages_py.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/std_srvs_generate_messages_nodejs.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/learn_generate_messages_cpp.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/learn_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/ser.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/turtlesim_generate_messages_eus.dir/all
+learn/CMakeFiles/stm_com.dir/all: learn/CMakeFiles/learn_generate_messages_nodejs.dir/all
+	$(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/depend
+	$(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=46,47 "Built target stm_com"
+.PHONY : learn/CMakeFiles/stm_com.dir/all
+
+# Include target in all.
+all: learn/CMakeFiles/stm_com.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+learn/CMakeFiles/stm_com.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 26
+	$(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/stm_com.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jichanun/catin_ws/build/CMakeFiles 0
+.PHONY : learn/CMakeFiles/stm_com.dir/rule
+
+# Convenience name for target.
+stm_com: learn/CMakeFiles/stm_com.dir/rule
+
+.PHONY : stm_com
+
+# clean rule for target.
+learn/CMakeFiles/stm_com.dir/clean:
+	$(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/clean
+.PHONY : learn/CMakeFiles/stm_com.dir/clean
+
+# clean rule for target.
+clean: learn/CMakeFiles/stm_com.dir/clean
 
 .PHONY : clean
 

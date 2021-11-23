@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   turtlesim
   message_generation
+  serial
 )
 
 ## System dependencies are found with CMake's conventions
@@ -126,14 +127,16 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+ include
+ include/learn
   ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
-# add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/learn.cpp
-# )
+ add_library(ser
+   src/serials.cpp
+   include/${PROJECT_NAME}/serials.hpp
+ )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -162,6 +165,10 @@ include_directories(
 
 add_executable(velocity_publisher src/main.cpp)
 target_link_libraries(velocity_publisher ${catkin_LIBRARIES})
+
+add_executable(stm_com src/serials.cpp)
+add_dependencies(stm_com ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(stm_com ser ${catkin_LIBRARIES})
 
 add_executable(pose_subscriber src/subscriber.cpp)
 target_link_libraries(pose_subscriber ${catkin_LIBRARIES})

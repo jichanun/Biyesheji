@@ -168,6 +168,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+learn/CMakeFiles/earphone_subscriber.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earphone_subscriber.dir/rule
+.PHONY : learn/CMakeFiles/earphone_subscriber.dir/rule
+
+# Convenience name for target.
+earphone_subscriber: learn/CMakeFiles/earphone_subscriber.dir/rule
+
+.PHONY : earphone_subscriber
+
+# fast build rule for target.
+earphone_subscriber/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/build
+.PHONY : earphone_subscriber/fast
+
+# Convenience name for target.
+learn/CMakeFiles/earp_publisher.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earp_publisher.dir/rule
+.PHONY : learn/CMakeFiles/earp_publisher.dir/rule
+
+# Convenience name for target.
+earp_publisher: learn/CMakeFiles/earp_publisher.dir/rule
+
+.PHONY : earp_publisher
+
+# fast build rule for target.
+earp_publisher/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/build
+.PHONY : earp_publisher/fast
+
+# Convenience name for target.
 learn/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/std_srvs_generate_messages_py.dir/rule
 .PHONY : learn/CMakeFiles/std_srvs_generate_messages_py.dir/rule
@@ -483,21 +513,6 @@ _learn_generate_messages_check_deps_vision/fast:
 .PHONY : _learn_generate_messages_check_deps_vision/fast
 
 # Convenience name for target.
-learn/CMakeFiles/earp_publisher.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earp_publisher.dir/rule
-.PHONY : learn/CMakeFiles/earp_publisher.dir/rule
-
-# Convenience name for target.
-earp_publisher: learn/CMakeFiles/earp_publisher.dir/rule
-
-.PHONY : earp_publisher
-
-# fast build rule for target.
-earp_publisher/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/earp_publisher.dir/build.make learn/CMakeFiles/earp_publisher.dir/build
-.PHONY : earp_publisher/fast
-
-# Convenience name for target.
 learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
 .PHONY : learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
@@ -543,6 +558,21 @@ learn_generate_messages_eus/fast:
 .PHONY : learn_generate_messages_eus/fast
 
 # Convenience name for target.
+learn/CMakeFiles/ser.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/ser.dir/rule
+.PHONY : learn/CMakeFiles/ser.dir/rule
+
+# Convenience name for target.
+ser: learn/CMakeFiles/ser.dir/rule
+
+.PHONY : ser
+
+# fast build rule for target.
+ser/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/build
+.PHONY : ser/fast
+
+# Convenience name for target.
 learn/CMakeFiles/learn_gencpp.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_gencpp.dir/rule
 .PHONY : learn/CMakeFiles/learn_gencpp.dir/rule
@@ -586,21 +616,6 @@ velocity_publisher: learn/CMakeFiles/velocity_publisher.dir/rule
 velocity_publisher/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/velocity_publisher.dir/build.make learn/CMakeFiles/velocity_publisher.dir/build
 .PHONY : velocity_publisher/fast
-
-# Convenience name for target.
-learn/CMakeFiles/earphone_subscriber.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/earphone_subscriber.dir/rule
-.PHONY : learn/CMakeFiles/earphone_subscriber.dir/rule
-
-# Convenience name for target.
-earphone_subscriber: learn/CMakeFiles/earphone_subscriber.dir/rule
-
-.PHONY : earphone_subscriber
-
-# fast build rule for target.
-earphone_subscriber/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/earphone_subscriber.dir/build.make learn/CMakeFiles/earphone_subscriber.dir/build
-.PHONY : earphone_subscriber/fast
 
 # Convenience name for target.
 learn/CMakeFiles/learn_geneus.dir/rule:
@@ -706,6 +721,21 @@ learn_genpy: learn/CMakeFiles/learn_genpy.dir/rule
 learn_genpy/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_genpy.dir/build.make learn/CMakeFiles/learn_genpy.dir/build
 .PHONY : learn_genpy/fast
+
+# Convenience name for target.
+learn/CMakeFiles/stm_com.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/stm_com.dir/rule
+.PHONY : learn/CMakeFiles/stm_com.dir/rule
+
+# Convenience name for target.
+stm_com: learn/CMakeFiles/stm_com.dir/rule
+
+.PHONY : stm_com
+
+# fast build rule for target.
+stm_com/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/build
+.PHONY : stm_com/fast
 
 src/ear_pub.o: src/ear_pub.cpp.o
 
@@ -842,6 +872,36 @@ src/personsubscriber.cpp.s:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/person_subscriber.dir/build.make learn/CMakeFiles/person_subscriber.dir/src/personsubscriber.cpp.s
 .PHONY : src/personsubscriber.cpp.s
 
+src/serials.o: src/serials.cpp.o
+
+.PHONY : src/serials.o
+
+# target to build an object file
+src/serials.cpp.o:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.o
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/src/serials.cpp.o
+.PHONY : src/serials.cpp.o
+
+src/serials.i: src/serials.cpp.i
+
+.PHONY : src/serials.i
+
+# target to preprocess a source file
+src/serials.cpp.i:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.i
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/src/serials.cpp.i
+.PHONY : src/serials.cpp.i
+
+src/serials.s: src/serials.cpp.s
+
+.PHONY : src/serials.s
+
+# target to generate assembly for a file
+src/serials.cpp.s:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.s
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/src/serials.cpp.s
+.PHONY : src/serials.cpp.s
+
 src/subscriber.o: src/subscriber.cpp.o
 
 .PHONY : src/subscriber.o
@@ -880,6 +940,8 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... earphone_subscriber"
+	@echo "... earp_publisher"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... _learn_generate_messages_check_deps_expectp"
 	@echo "... std_srvs_generate_messages_lisp"
@@ -902,15 +964,14 @@ help:
 	@echo "... learn_generate_messages_py"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... _learn_generate_messages_check_deps_vision"
-	@echo "... earp_publisher"
 	@echo "... _learn_generate_messages_check_deps_earphone"
 	@echo "... learn_generate_messages_cpp"
 	@echo "... learn_generate_messages_eus"
+	@echo "... ser"
 	@echo "... test"
 	@echo "... learn_gencpp"
 	@echo "... turtlesim_generate_messages_eus"
 	@echo "... velocity_publisher"
-	@echo "... earphone_subscriber"
 	@echo "... learn_geneus"
 	@echo "... learn_genlisp"
 	@echo "... learn_generate_messages_nodejs"
@@ -918,6 +979,7 @@ help:
 	@echo "... person_publisher"
 	@echo "... learn_gennodejs"
 	@echo "... learn_genpy"
+	@echo "... stm_com"
 	@echo "... src/ear_pub.o"
 	@echo "... src/ear_pub.i"
 	@echo "... src/ear_pub.s"
@@ -933,6 +995,9 @@ help:
 	@echo "... src/personsubscriber.o"
 	@echo "... src/personsubscriber.i"
 	@echo "... src/personsubscriber.s"
+	@echo "... src/serials.o"
+	@echo "... src/serials.i"
+	@echo "... src/serials.s"
 	@echo "... src/subscriber.o"
 	@echo "... src/subscriber.i"
 	@echo "... src/subscriber.s"
