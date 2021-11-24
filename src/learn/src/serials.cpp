@@ -6,7 +6,7 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 
-#define HAS_STM32  0
+#define HAS_STM32  1
 
 
 ToRosUnion ReceiveData,TransmitData;
@@ -82,7 +82,7 @@ int main(int argc, char** argv)
     ROS_INFO_STREAM("DEBUG MODE ");
 #endif
 
-    ros::Rate loop_rate(1);
+    ros::Rate loop_rate(5);
     while(ros::ok())
     {
         //获取缓冲区内的字节数

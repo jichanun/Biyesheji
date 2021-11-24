@@ -28,13 +28,12 @@ PP = PathPlanning.PathPlanning(5, 1, 0.5, 0.2, 0.5, 3, 0, 0.5, 1, 0)
 PPW= PathPlanningWB.PathPlanning(5, 1, 0.5, 0.2, 0.5, 3, 0, 0.5, 1, 0)
 
 expect_info_pub = rospy.Publisher('/expect_info', expectp, queue_size=50)
+exp = expectp()
 
 def ActualInfoCallback(msg):
     #rospy.loginfo("Caculater received  actual Info: X:%f  Y:%f ",  msg.x[0], msg.y[0])
     Caculate(msg)
-    exp = expectp()
-    exp.x[0] =QJBL.S.idealX
-    exp.y[0]=QJBL.S.idealY
+    global exp
     # 发布消息
     expect_info_pub.publish(exp)
     #rospy.loginfo("Publsh person message[%f, %f]", exp.x[0], exp.y[0])    
@@ -58,37 +57,29 @@ def velocity_publisher():
 
 def Caculate(msg):
 #for (XX) in range (80,120):
-    data = np.zeros(13)
+    for i in  range (3,6):
+        X = msg.x[i]
+        Y = msg.y[i]#循环输入自身位置
+        D=1
+        #if X==0:X=1
+        #if Y == 0: Y=1
+        k=1
+        for j in range(2,6):
+                if k!=i:
+                    QJBL.F[str(k)].setFLocation(msg.x[j],msg.y[j],1,0,0)
+                    k+=1
+        #QJBL.T.setTLocation(msg.x[0],msg.x[0],1,0,0)
+        QJBL.T.setTLocation(9,9,1,0,0)
+        
+        PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
+        exp.x[i] = QJBL.S.idealX
+        exp.y[i] = QJBL.S.idealY
+        #print("Expect ID :%d   X: %.2f  Y : %.2f"  %(i,exp.x[i],exp.y[i]))
 
-    # 输入：QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD就是AUV当前的X、Y和深度，0，0，0暂时不用管，9，9，1就是目标点的X、Y和深度
-    #if data[-1]>0 and data[-1]<6:
-        #print(data)
-        #print(data[int(data[-1])*2+2])
-    X = msg.x[0]
-    Y = msg.y[0]#自己是几就输入几号
 
-    D=1#随便设的自身位置
-    #QJBL.M.M3D[3:5,1:3,]=1
-       # D=1
-       # np.delete(data,int(data[-1])*2+2)
-       # np.delete(data,int(data[-1])*2+2)
-    QJBL.F[str(1)].setFLocation(data[4],data[5],1,0,0)
-    QJBL.F[str(2)].setFLocation(data[6],data[7],1,0,0)
-    QJBL.F[str(3)].setFLocation(data[8],data[9],1,0,0)
-    QJBL.F[str(4)].setFLocation(data[10],data[11],1,0,0)
-    QJBL.T.setTLocation(9,9,1,0,0)
 
-    #print("X,Y=%F %F "% (X,Y))
-    #print(QJBL.T.nowTX)
-    PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
-    # 输出：QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD也是期望的AUV当前的X、Y和深度
 
-    #[DVX,DVY]=PPW.WBF(X,Y,QJBL.T.nowTX,QJBL.T.nowTY)
-    #[QJBL.S.idealX,QJBL.S.idealY]=PPW.WB(X,Y,DVX,DVY)
 
-    
-
-   # print(QJBL.S.idealX,QJBL.S.idealY,QJBL.S.idealD)
 
 for  i in range(100):
         velocity_publisher()
