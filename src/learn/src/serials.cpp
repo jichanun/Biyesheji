@@ -6,7 +6,7 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 
-#define HAS_STM32  1
+#define HAS_STM32  0
 
 
 ToRosUnion ReceiveData,TransmitData;
@@ -26,13 +26,13 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
         ROS_INFO ("Robot ID : %d x: %.2f ,y : %.2f ",i, msg->x[i],msg->y[i]);
     #if HAS_STM32
     #else
+        ToRosUnion temp;
     for (int i =0;i<6;i++)
     {    
-        ToRosUnion temp;
         temp.vars.px[i]=TransmitData.vars.px[i]-ReceiveData.vars.px[i];
-        temp.vars.py[i]=TransmitData.vars.py[i]-ReceiveData.vars.px[i];
-        ReceiveData.vars.px[i]+=0.3*temp.vars.px[i];
-        ReceiveData.vars.py[i]+=0.3*temp.vars.py[i];
+        temp.vars.py[i]=TransmitData.vars.py[i]-ReceiveData.vars.py[i];
+        ReceiveData.vars.px[i]+=0.05*temp.vars.px[i];
+        ReceiveData.vars.py[i]+=0.05*temp.vars.py[i];
     }
     #endif
 }

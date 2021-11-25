@@ -55,11 +55,19 @@ class PathPlanning():
             QJBL.S.idealYO = nyo
             QJBL.S.idealV = nv
         else:
+            #Step 1 :: caculate the gradient  
+            #step 2 :: return the error 
             FTx,FTy,FTd = self.FT(nx, ny, nd, ntx, nty, ntd)#引力场
             FOx,FOy,FOd = self.FO(nx, ny, nd)#躲避障碍，如果没有就输出0
             FBx,FBy,FBd = self.FB(nx, ny, nd)#躲避碰撞，返回一个值？TODO:上面三个返回的是啥
-            Vx = self.FYtoV * (FTx + FOx  + FBx)
-            Vy = self.FYtoV * (FTy+FOy  + FBy)
+            '''print ("debug ::::::::::")
+            print("now x is   %.2f "% nx)
+            print("FBX  is   %.2f "% FBx)
+            print("FBy  is   %.2f "% FBy)
+            print("FBd  is   %.2f "% FBd)
+            '''
+            Vx = self.FYtoV * (  FOx  + FBx)
+            Vy = self.FYtoV * (FOy  + FBy)
             Vd = self.FDtoV * (FOd + FTd + FBd)#速度*误差？TODO:是不是误差待考
             VY = (Vx ** 2 + Vy ** 2) ** 0.5#平面移动速度
             if VY > self.maxSpeedY:
@@ -109,13 +117,21 @@ class PathPlanning():
         return x,y,d
     
     # 目标追踪
-    def FT(self, x, y, d, tx, ty, td):#输入目标的，和自身的，输出期望的
+    def FT(self, x, y, d, tx, ty, td):#输入目标的，和自身的，输出梯度
         #输入目标的，和自身的
-        FTx = -(2 * tx - 2 * x) / (4 * ((tx - x) ** 2 + (ty - y) ** 2 + (td - d) ** 2) ** (1 / 2))
-        FTy = -(2 * ty - 2 * y) / (4 * ((tx - x) ** 2 + (ty - y) ** 2 + (td - d) ** 2) ** (1 / 2))
-        FTd = -(2 * td - 2 * d) / (4 * ((tx - x) ** 2 + (ty - y) ** 2 + (td - d) ** 2) ** (1 / 2))
+        try :
+            FTx = -(2 * tx - 2 * x) / (4 * ((tx - x) ** 2 + (ty - y) ** 2 + (td - d) ** 2) ** (1 / 2))
+            FTy = -(2 * ty - 2 * y) / (4 * ((tx - x) ** 2 + (ty - y) ** 2 + (td - d) ** 2) ** (1 / 2))
+            FTd = -(2 * td - 2 * d) / (4 * ((tx - x) ** 2 + (ty - y) ** 2 + (td - d) ** 2) ** (1 / 2))
+        except ZeroDivisionError:
+            print("This Robot is on the Position!")
+            FTx=FTy=FTd=0
+            #step 2 :: take the error into consideration, change gradient to speed 
+        FTx = FTx * abs(tx-x)
+        FTy = FTy * abs(ty-y)
+        FTd = FTd * abs(td-d)
         return -FTx,-FTy,-FTd
-        #输出期望的
+        #输出梯度
 
     # 障碍躲避
     def FO(self, x, y, d):#输入目标的坐标
@@ -167,19 +183,30 @@ class PathPlanning():
             dy = y - QJBL.F[str(f)].nowFY
             dd = d - QJBL.F[str(f)].nowFD
             D = (dx**2 + dy**2 + dd**2 + 0.0001)**0.5;
+            print("Error to ROBOT %d is : X: %.2f , Y:%.2f ,Z : %.2f "%(f,dx,dy,dd))
+            print("error sum is %.2f "%D)
             FBx = FBx + self.FBFunction(dx,D)
             FBy = FBy + self.FBFunction(dy,D)
             FBd = FBd + self.FBFunction(dd,D)
-        print("FBX=%f" %FBx)
+            try:
+                FBsum = (FBx**2+FBy**2+FBd**2)**0.5
+                FBx = FBx/FBsum
+                FBy = FBy/FBsum
+                FBd = FBd/FBsum
+            except ZeroDivisionError:
+                print ("no friends around.")
+            print("fbx is :%.2f "%FBx)
+            print("fby is :%.2f "%FBy)
         return FBx,FBy,FBd
 
     # AUV间避碰调节函数
     def FBFunction(self, da, d):
-        fb = math.tanh(2.645-3.9675*(d/self.safeDIS))/2 + 0.5;
-        #print ("fb=%f" %fb)
-        fb = da/d*fb
+        print("d is %.2f "%(3.9675*(d/self.safeDIS)))
+        print("tanh is %.2f"%(math.tanh(2.645-3.9675*(d/self.safeDIS))))
+        fb = math.tanh(2.645-20*(d/self.safeDIS))/2 + 0.5;#20保证了机器人距离约为0.8m
+        print ("fb=%f" %fb)
         return fb
-
+        #2.645   #3.9675
 
     # 全局路径
     def GeneticAlgorithm(self,PathNumber, spx, spy, gpx, gpy):

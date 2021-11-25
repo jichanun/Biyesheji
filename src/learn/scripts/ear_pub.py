@@ -57,7 +57,7 @@ def velocity_publisher():
 
 def Caculate(msg):
 #for (XX) in range (80,120):
-    for i in  range (3,6):
+    for i in  range (3,4):
         X = msg.x[i]
         Y = msg.y[i]#循环输入自身位置
         D=1
@@ -65,7 +65,7 @@ def Caculate(msg):
         #if Y == 0: Y=1
         k=1
         for j in range(2,6):
-                if k!=i:
+                if j!=i:
                     QJBL.F[str(k)].setFLocation(msg.x[j],msg.y[j],1,0,0)
                     k+=1
         #QJBL.T.setTLocation(msg.x[0],msg.x[0],1,0,0)
