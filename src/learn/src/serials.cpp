@@ -31,13 +31,13 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
     {    
         temp.vars.px[i]=TransmitData.vars.px[i]-ReceiveData.vars.px[i];
         temp.vars.py[i]=TransmitData.vars.py[i]-ReceiveData.vars.py[i];
-        ReceiveData.vars.px[i]+=0.05*temp.vars.px[i]*i;
-        ReceiveData.vars.py[i]+=0.03*temp.vars.py[i]*i;
+        ReceiveData.vars.px[i]+=0.005*temp.vars.px[i]*i;
+        ReceiveData.vars.py[i]+=0.003*temp.vars.py[i]*i;
         //乘i表示每个机器人的运动速度不尽相同，这样不会使机器人叠加到一起
     }
     #endif
 }
-
+uint8_t InitFlag=0;
 
 int main(int argc, char** argv)
 {
@@ -136,6 +136,14 @@ int main(int argc, char** argv)
 #else
         ReceiveData.vars.data0=300;
             learn::vision Act;
+            if (!InitFlag){//调试时初始化所有机器人
+                ReceiveData.vars.px[0]=5;ReceiveData.vars.py[0]=10;//设定目标位置
+                ReceiveData.vars.px[2]=0;ReceiveData.vars.py[2]=0;
+                ReceiveData.vars.px[3]=3;ReceiveData.vars.py[3]=0;
+                ReceiveData.vars.px[4]=6;ReceiveData.vars.py[4]=0;
+                ReceiveData.vars.px[5]=9;ReceiveData.vars.py[5]=0;
+                InitFlag=1;
+            }
             for (int i=0;i<6;i++){
                 Act.x[i]=ReceiveData.vars.px[i];
                 Act.y[i]=ReceiveData.vars.py[i];
