@@ -137,7 +137,7 @@ int main(int argc, char** argv)
         ReceiveData.vars.data0=300;
             learn::vision Act;
             if (!InitFlag){//调试时初始化所有机器人
-                ReceiveData.vars.px[0]=5;ReceiveData.vars.py[0]=10;//设定目标位置
+                ReceiveData.vars.px[0]=5;ReceiveData.vars.py[0]=8;//设定目标位置
                 ReceiveData.vars.px[2]=0;ReceiveData.vars.py[2]=0;
                 ReceiveData.vars.px[3]=3;ReceiveData.vars.py[3]=0;
                 ReceiveData.vars.px[4]=6;ReceiveData.vars.py[4]=0;

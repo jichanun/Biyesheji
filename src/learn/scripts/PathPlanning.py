@@ -66,8 +66,8 @@ class PathPlanning():
             print("FBy  is   %.2f "% FBy)
             print("FBd  is   %.2f "% FBd)
             '''
-            Vx = self.FYtoV * (FTx+  FOx   )
-            Vy = self.FYtoV * (FTy+FOy  )
+            Vx = self.FYtoV * (FTx+  FOx +FBx )
+            Vy = self.FYtoV * (FTy+FOy  +FBy)
             Vd = self.FDtoV * (FOd + FTd + FBd)#速度*误差？TODO:是不是误差待考
             VY = (Vx ** 2 + Vy ** 2) ** 0.5#平面移动速度
             if VY > self.maxSpeedY:

@@ -50,7 +50,7 @@ def ActualInfoCallback(msg):
         pass
 
 
-    Caculate(msg)
+    Caculate(msg,Mode)
 
 
     global exp
@@ -117,7 +117,7 @@ def FormationChange(act):
     
 
 
-def Caculate(msg):
+def Caculate(msg,mode):
 #for (XX) in range (80,120):
     for i in  range (2,6):
         X = msg.x[i]
@@ -130,8 +130,12 @@ def Caculate(msg):
                 if j!=i:
                     QJBL.F[str(k)].setFLocation(msg.x[j],msg.y[j],1,0,0)
                     k+=1
+                QJBL.F[str(k)].setFLocation(msg.x[0],msg.y[0],1,0,0)
         #QJBL.T.setTLocation(msg.x[0],msg.x[0],1,0,0)
-        QJBL.T.setTLocation(Fomat.x[i],Fomat.y[i],1,0,0)
+        if (mode==1):
+            QJBL.T.setTLocation(Fomat.x[i],Fomat.y[i],1,0,0)
+        elif (mode==2):
+            QJBL.T.setTLocation(msg.x[0],msg.y[0],1,0,0)
         #print("robot %d at  %.2f  , %.2f ,which want to go to %.2f , %.2f "%(i,X,Y,Fomat.x[i],Fomat.y[i]))
         PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
         exp.x[i] = QJBL.S.idealX
