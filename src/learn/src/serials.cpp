@@ -31,8 +31,9 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
     {    
         temp.vars.px[i]=TransmitData.vars.px[i]-ReceiveData.vars.px[i];
         temp.vars.py[i]=TransmitData.vars.py[i]-ReceiveData.vars.py[i];
-        ReceiveData.vars.px[i]+=0.05*temp.vars.px[i];
-        ReceiveData.vars.py[i]+=0.05*temp.vars.py[i];
+        ReceiveData.vars.px[i]+=0.05*temp.vars.px[i]*i;
+        ReceiveData.vars.py[i]+=0.03*temp.vars.py[i]*i;
+        //乘i表示每个机器人的运动速度不尽相同，这样不会使机器人叠加到一起
     }
     #endif
 }

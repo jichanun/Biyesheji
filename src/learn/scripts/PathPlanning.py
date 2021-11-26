@@ -66,8 +66,8 @@ class PathPlanning():
             print("FBy  is   %.2f "% FBy)
             print("FBd  is   %.2f "% FBd)
             '''
-            Vx = self.FYtoV * (  FOx  + FBx)
-            Vy = self.FYtoV * (FOy  + FBy)
+            Vx = self.FYtoV * (FTx+  FOx  + FBx)
+            Vy = self.FYtoV * (FTy+FOy  + FBy)
             Vd = self.FDtoV * (FOd + FTd + FBd)#速度*误差？TODO:是不是误差待考
             VY = (Vx ** 2 + Vy ** 2) ** 0.5#平面移动速度
             if VY > self.maxSpeedY:
@@ -160,12 +160,12 @@ class PathPlanning():
             FOx = self.FOFunction(x - gx * self.MapXL, Dis)
             FOy = self.FOFunction(y - gy * self.MapYL, Dis)
             FOd = self.FOFunction(d - gd * self.MapDL, Dis)
-            print("dis=%f,da=%f"%(Dis,(x - gx * self.MapXL)))
+            #print("dis=%f,da=%f"%(Dis,(x - gx * self.MapXL)))
         else:
             FOx = 0
             FOy = 0
             FOd = 0
-        print("FOX=%f" %FOx)
+        #print("FOX=%f" %FOx)
         return FOx,FOy,FOd
 
     # 障碍躲避调节函数
@@ -183,8 +183,8 @@ class PathPlanning():
             dy = y - QJBL.F[str(f)].nowFY
             dd = d - QJBL.F[str(f)].nowFD
             D = (dx**2 + dy**2 + dd**2 + 0.0001)**0.5;
-            print("Error to ROBOT %d is : X: %.2f , Y:%.2f ,Z : %.2f "%(f,dx,dy,dd))
-            print("error sum is %.2f "%D)
+            #print("Error to ROBOT %d is : X: %.2f , Y:%.2f ,Z : %.2f "%(f,dx,dy,dd))
+            #print("error sum is %.2f "%D)
             FBx = FBx + self.FBFunction(dx,D)
             FBy = FBy + self.FBFunction(dy,D)
             FBd = FBd + self.FBFunction(dd,D)
@@ -194,19 +194,26 @@ class PathPlanning():
                 FBy = FBy/FBsum
                 FBd = FBd/FBsum
             except ZeroDivisionError:
-                print ("no friends around.")
-            print("fbx is :%.2f "%FBx)
-            print("fby is :%.2f "%FBy)
+                #print ("no friends around.")
+                pass
+            #print("fbx is :%.2f "%FBx)
+            #print("fby is :%.2f "%FBy)
         return FBx,FBy,FBd
 
     # AUV间避碰调节函数
     def FBFunction(self, da, d):
-        print("d is %.2f "%(3.9675*(d/self.safeDIS)))
-        print("tanh is %.2f"%(math.tanh(2.645-3.9675*(d/self.safeDIS))))
-        fb = math.tanh(2.645-20*(d/self.safeDIS))/2 + 0.5;#20保证了机器人距离约为0.8m
-        print ("fb=%f" %fb)
-        return fb
+        #print("d is %.2f "%(3.9675*(d/self.safeDIS)))
+        #print("tanh is %.2f"%(math.tanh(2.645-3.9675*(d/self.safeDIS))))
+        fb = math.tanh(2.645-10*(d/self.safeDIS))/2 + 0.5;#20保证了机器人距离约为0.8m
+        #但是多个机器人的时候还是会有近似相撞的情况。故改大
+
+        #print ("fb=%f" %fb)
+        if (da>=0):
+            return fb
+        else :
+            return -fb
         #2.645   #3.9675
+        #暂时会以目标为界限产生一个强势场，机器人基本不会进入该范围
 
     # 全局路径
     def GeneticAlgorithm(self,PathNumber, spx, spy, gpx, gpy):

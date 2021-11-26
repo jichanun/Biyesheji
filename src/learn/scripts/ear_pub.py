@@ -57,7 +57,7 @@ def velocity_publisher():
 
 def Caculate(msg):
 #for (XX) in range (80,120):
-    for i in  range (3,4):
+    for i in  range (3,6):
         X = msg.x[i]
         Y = msg.y[i]#循环输入自身位置
         D=1
@@ -75,6 +75,8 @@ def Caculate(msg):
         exp.x[i] = QJBL.S.idealX
         exp.y[i] = QJBL.S.idealY
         #print("Expect ID :%d   X: %.2f  Y : %.2f"  %(i,exp.x[i],exp.y[i]))
+        ############
+        #目前不确定会不会撞到目标物体上，可能会。但是暂时先不管他，反正有围捕
 
 
 
