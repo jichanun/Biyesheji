@@ -14,6 +14,8 @@ import numpy as np
 import time
 import serial #导入serial包
 
+import cv2
+
 def node():
     #rospy.init_node("serial_test") #初始化ros节点
     ser = serial.Serial("/dev/ttyACM0", 115200, timeout=1) #打开串口, 端口号:"/dev/ttyUSB0". 波特率:9600. 延时等待1s
@@ -32,6 +34,7 @@ def node():
             break
 
 
+cap = cv2.VideoCapture(0)
 
 def ActualInfoCallback(msg):
     #rospy.loginfo("CV received Actual position: X:%f  Y:%f ", msg.x[0], msg.y[0])
@@ -46,8 +49,10 @@ def person_subscriber():
 	# 创建一个Subscriber，订阅名为/person_info的topic，注册回调函数personInfoCallback
     rospy.Subscriber("/actual_info", vision, ActualInfoCallback)
     rospy.Subscriber("/expect_info", expectp, ExpectInfoCallback)
-
-	# 循环等待回调函数
+    if cv2.waitKey(1) != 27:
+        flag, img = cap.read()
+        if flag:
+            cv2.imshow("test", img)	# 循环等待回调函数
     rospy.spin()
 
 if __name__ == '__main__':

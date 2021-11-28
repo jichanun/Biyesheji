@@ -90,17 +90,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -123,6 +112,17 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target test
 test:
@@ -198,6 +198,36 @@ earp_publisher/fast:
 .PHONY : earp_publisher/fast
 
 # Convenience name for target.
+learn/CMakeFiles/person_subscriber.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/person_subscriber.dir/rule
+.PHONY : learn/CMakeFiles/person_subscriber.dir/rule
+
+# Convenience name for target.
+person_subscriber: learn/CMakeFiles/person_subscriber.dir/rule
+
+.PHONY : person_subscriber
+
+# fast build rule for target.
+person_subscriber/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/person_subscriber.dir/build.make learn/CMakeFiles/person_subscriber.dir/build
+.PHONY : person_subscriber/fast
+
+# Convenience name for target.
+learn/CMakeFiles/stm_com.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/stm_com.dir/rule
+.PHONY : learn/CMakeFiles/stm_com.dir/rule
+
+# Convenience name for target.
+stm_com: learn/CMakeFiles/stm_com.dir/rule
+
+.PHONY : stm_com
+
+# fast build rule for target.
+stm_com/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/build
+.PHONY : stm_com/fast
+
+# Convenience name for target.
 learn/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/std_srvs_generate_messages_py.dir/rule
 .PHONY : learn/CMakeFiles/std_srvs_generate_messages_py.dir/rule
@@ -228,6 +258,36 @@ _learn_generate_messages_check_deps_expectp/fast:
 .PHONY : _learn_generate_messages_check_deps_expectp/fast
 
 # Convenience name for target.
+learn/CMakeFiles/velocity_publisher.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/velocity_publisher.dir/rule
+.PHONY : learn/CMakeFiles/velocity_publisher.dir/rule
+
+# Convenience name for target.
+velocity_publisher: learn/CMakeFiles/velocity_publisher.dir/rule
+
+.PHONY : velocity_publisher
+
+# fast build rule for target.
+velocity_publisher/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/velocity_publisher.dir/build.make learn/CMakeFiles/velocity_publisher.dir/build
+.PHONY : velocity_publisher/fast
+
+# Convenience name for target.
+learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
+.PHONY : learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+turtlesim_generate_messages_eus: learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
+
+.PHONY : turtlesim_generate_messages_eus
+
+# fast build rule for target.
+turtlesim_generate_messages_eus/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/turtlesim_generate_messages_eus.dir/build.make learn/CMakeFiles/turtlesim_generate_messages_eus.dir/build
+.PHONY : turtlesim_generate_messages_eus/fast
+
+# Convenience name for target.
 learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
 .PHONY : learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
@@ -241,21 +301,6 @@ std_srvs_generate_messages_lisp: learn/CMakeFiles/std_srvs_generate_messages_lis
 std_srvs_generate_messages_lisp/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make learn/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
 .PHONY : std_srvs_generate_messages_lisp/fast
-
-# Convenience name for target.
-learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-.PHONY : learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_eus: learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make learn/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
 
 # Convenience name for target.
 learn/CMakeFiles/turtlesim_generate_messages_nodejs.dir/rule:
@@ -286,21 +331,6 @@ geometry_msgs_generate_messages_eus: learn/CMakeFiles/geometry_msgs_generate_mes
 geometry_msgs_generate_messages_eus/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build.make learn/CMakeFiles/geometry_msgs_generate_messages_eus.dir/build
 .PHONY : geometry_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-learn/CMakeFiles/person_subscriber.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/person_subscriber.dir/rule
-.PHONY : learn/CMakeFiles/person_subscriber.dir/rule
-
-# Convenience name for target.
-person_subscriber: learn/CMakeFiles/person_subscriber.dir/rule
-
-.PHONY : person_subscriber
-
-# fast build rule for target.
-person_subscriber/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/person_subscriber.dir/build.make learn/CMakeFiles/person_subscriber.dir/build
-.PHONY : person_subscriber/fast
 
 # Convenience name for target.
 learn/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
@@ -363,6 +393,36 @@ geometry_msgs_generate_messages_nodejs/fast:
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
+learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+.PHONY : learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+std_srvs_generate_messages_eus: learn/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
+
+.PHONY : std_srvs_generate_messages_eus
+
+# fast build rule for target.
+std_srvs_generate_messages_eus/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make learn/CMakeFiles/std_srvs_generate_messages_eus.dir/build
+.PHONY : std_srvs_generate_messages_eus/fast
+
+# Convenience name for target.
+learn/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : learn/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_lisp: learn/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_lisp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make learn/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
 learn/CMakeFiles/learn_generate_messages.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_generate_messages.dir/rule
 .PHONY : learn/CMakeFiles/learn_generate_messages.dir/rule
@@ -408,6 +468,66 @@ geometry_msgs_generate_messages_cpp/fast:
 .PHONY : geometry_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
+learn/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : learn/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: learn/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make learn/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
+.PHONY : learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
+
+# Convenience name for target.
+_learn_generate_messages_check_deps_earphone: learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
+
+.PHONY : _learn_generate_messages_check_deps_earphone
+
+# fast build rule for target.
+_learn_generate_messages_check_deps_earphone/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/build.make learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/build
+.PHONY : _learn_generate_messages_check_deps_earphone/fast
+
+# Convenience name for target.
+learn/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : learn/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_cpp: learn/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_cpp
+
+# fast build rule for target.
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make learn/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+learn/CMakeFiles/ser.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/ser.dir/rule
+.PHONY : learn/CMakeFiles/ser.dir/rule
+
+# Convenience name for target.
+ser: learn/CMakeFiles/ser.dir/rule
+
+.PHONY : ser
+
+# fast build rule for target.
+ser/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/build
+.PHONY : ser/fast
+
+# Convenience name for target.
 learn/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
 .PHONY : learn/CMakeFiles/geometry_msgs_generate_messages_py.dir/rule
@@ -438,6 +558,36 @@ turtlesim_generate_messages_cpp/fast:
 .PHONY : turtlesim_generate_messages_cpp/fast
 
 # Convenience name for target.
+learn/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : learn/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_nodejs: learn/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make learn/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+learn/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : learn/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_py: learn/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_py
+
+# fast build rule for target.
+sensor_msgs_generate_messages_py/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make learn/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+# Convenience name for target.
 learn/CMakeFiles/turtlesim_generate_messages_py.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/turtlesim_generate_messages_py.dir/rule
 .PHONY : learn/CMakeFiles/turtlesim_generate_messages_py.dir/rule
@@ -466,6 +616,36 @@ _learn_generate_messages_check_deps_Person: learn/CMakeFiles/_learn_generate_mes
 _learn_generate_messages_check_deps_Person/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/_learn_generate_messages_check_deps_Person.dir/build.make learn/CMakeFiles/_learn_generate_messages_check_deps_Person.dir/build
 .PHONY : _learn_generate_messages_check_deps_Person/fast
+
+# Convenience name for target.
+learn/CMakeFiles/learn_generate_messages_eus.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_generate_messages_eus.dir/rule
+.PHONY : learn/CMakeFiles/learn_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+learn_generate_messages_eus: learn/CMakeFiles/learn_generate_messages_eus.dir/rule
+
+.PHONY : learn_generate_messages_eus
+
+# fast build rule for target.
+learn_generate_messages_eus/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_generate_messages_eus.dir/build.make learn/CMakeFiles/learn_generate_messages_eus.dir/build
+.PHONY : learn_generate_messages_eus/fast
+
+# Convenience name for target.
+learn/CMakeFiles/learn_generate_messages_cpp.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_generate_messages_cpp.dir/rule
+.PHONY : learn/CMakeFiles/learn_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+learn_generate_messages_cpp: learn/CMakeFiles/learn_generate_messages_cpp.dir/rule
+
+.PHONY : learn_generate_messages_cpp
+
+# fast build rule for target.
+learn_generate_messages_cpp/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_generate_messages_cpp.dir/build.make learn/CMakeFiles/learn_generate_messages_cpp.dir/build
+.PHONY : learn_generate_messages_cpp/fast
 
 # Convenience name for target.
 learn/CMakeFiles/learn_generate_messages_py.dir/rule:
@@ -513,66 +693,6 @@ _learn_generate_messages_check_deps_vision/fast:
 .PHONY : _learn_generate_messages_check_deps_vision/fast
 
 # Convenience name for target.
-learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
-.PHONY : learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
-
-# Convenience name for target.
-_learn_generate_messages_check_deps_earphone: learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/rule
-
-.PHONY : _learn_generate_messages_check_deps_earphone
-
-# fast build rule for target.
-_learn_generate_messages_check_deps_earphone/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/build.make learn/CMakeFiles/_learn_generate_messages_check_deps_earphone.dir/build
-.PHONY : _learn_generate_messages_check_deps_earphone/fast
-
-# Convenience name for target.
-learn/CMakeFiles/learn_generate_messages_cpp.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_generate_messages_cpp.dir/rule
-.PHONY : learn/CMakeFiles/learn_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-learn_generate_messages_cpp: learn/CMakeFiles/learn_generate_messages_cpp.dir/rule
-
-.PHONY : learn_generate_messages_cpp
-
-# fast build rule for target.
-learn_generate_messages_cpp/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_generate_messages_cpp.dir/build.make learn/CMakeFiles/learn_generate_messages_cpp.dir/build
-.PHONY : learn_generate_messages_cpp/fast
-
-# Convenience name for target.
-learn/CMakeFiles/learn_generate_messages_eus.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_generate_messages_eus.dir/rule
-.PHONY : learn/CMakeFiles/learn_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-learn_generate_messages_eus: learn/CMakeFiles/learn_generate_messages_eus.dir/rule
-
-.PHONY : learn_generate_messages_eus
-
-# fast build rule for target.
-learn_generate_messages_eus/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_generate_messages_eus.dir/build.make learn/CMakeFiles/learn_generate_messages_eus.dir/build
-.PHONY : learn_generate_messages_eus/fast
-
-# Convenience name for target.
-learn/CMakeFiles/ser.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/ser.dir/rule
-.PHONY : learn/CMakeFiles/ser.dir/rule
-
-# Convenience name for target.
-ser: learn/CMakeFiles/ser.dir/rule
-
-.PHONY : ser
-
-# fast build rule for target.
-ser/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/build
-.PHONY : ser/fast
-
-# Convenience name for target.
 learn/CMakeFiles/learn_gencpp.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/learn_gencpp.dir/rule
 .PHONY : learn/CMakeFiles/learn_gencpp.dir/rule
@@ -586,36 +706,6 @@ learn_gencpp: learn/CMakeFiles/learn_gencpp.dir/rule
 learn_gencpp/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_gencpp.dir/build.make learn/CMakeFiles/learn_gencpp.dir/build
 .PHONY : learn_gencpp/fast
-
-# Convenience name for target.
-learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
-.PHONY : learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-turtlesim_generate_messages_eus: learn/CMakeFiles/turtlesim_generate_messages_eus.dir/rule
-
-.PHONY : turtlesim_generate_messages_eus
-
-# fast build rule for target.
-turtlesim_generate_messages_eus/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/turtlesim_generate_messages_eus.dir/build.make learn/CMakeFiles/turtlesim_generate_messages_eus.dir/build
-.PHONY : turtlesim_generate_messages_eus/fast
-
-# Convenience name for target.
-learn/CMakeFiles/velocity_publisher.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/velocity_publisher.dir/rule
-.PHONY : learn/CMakeFiles/velocity_publisher.dir/rule
-
-# Convenience name for target.
-velocity_publisher: learn/CMakeFiles/velocity_publisher.dir/rule
-
-.PHONY : velocity_publisher
-
-# fast build rule for target.
-velocity_publisher/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/velocity_publisher.dir/build.make learn/CMakeFiles/velocity_publisher.dir/build
-.PHONY : velocity_publisher/fast
 
 # Convenience name for target.
 learn/CMakeFiles/learn_geneus.dir/rule:
@@ -663,21 +753,6 @@ learn_generate_messages_nodejs/fast:
 .PHONY : learn_generate_messages_nodejs/fast
 
 # Convenience name for target.
-learn/CMakeFiles/pose_subscriber.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/pose_subscriber.dir/rule
-.PHONY : learn/CMakeFiles/pose_subscriber.dir/rule
-
-# Convenience name for target.
-pose_subscriber: learn/CMakeFiles/pose_subscriber.dir/rule
-
-.PHONY : pose_subscriber
-
-# fast build rule for target.
-pose_subscriber/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/pose_subscriber.dir/build.make learn/CMakeFiles/pose_subscriber.dir/build
-.PHONY : pose_subscriber/fast
-
-# Convenience name for target.
 learn/CMakeFiles/person_publisher.dir/rule:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/person_publisher.dir/rule
 .PHONY : learn/CMakeFiles/person_publisher.dir/rule
@@ -691,6 +766,21 @@ person_publisher: learn/CMakeFiles/person_publisher.dir/rule
 person_publisher/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/person_publisher.dir/build.make learn/CMakeFiles/person_publisher.dir/build
 .PHONY : person_publisher/fast
+
+# Convenience name for target.
+learn/CMakeFiles/pose_subscriber.dir/rule:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/pose_subscriber.dir/rule
+.PHONY : learn/CMakeFiles/pose_subscriber.dir/rule
+
+# Convenience name for target.
+pose_subscriber: learn/CMakeFiles/pose_subscriber.dir/rule
+
+.PHONY : pose_subscriber
+
+# fast build rule for target.
+pose_subscriber/fast:
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/pose_subscriber.dir/build.make learn/CMakeFiles/pose_subscriber.dir/build
+.PHONY : pose_subscriber/fast
 
 # Convenience name for target.
 learn/CMakeFiles/learn_gennodejs.dir/rule:
@@ -721,21 +811,6 @@ learn_genpy: learn/CMakeFiles/learn_genpy.dir/rule
 learn_genpy/fast:
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/learn_genpy.dir/build.make learn/CMakeFiles/learn_genpy.dir/build
 .PHONY : learn_genpy/fast
-
-# Convenience name for target.
-learn/CMakeFiles/stm_com.dir/rule:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 learn/CMakeFiles/stm_com.dir/rule
-.PHONY : learn/CMakeFiles/stm_com.dir/rule
-
-# Convenience name for target.
-stm_com: learn/CMakeFiles/stm_com.dir/rule
-
-.PHONY : stm_com
-
-# fast build rule for target.
-stm_com/fast:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/build
-.PHONY : stm_com/fast
 
 src/ear_pub.o: src/ear_pub.cpp.o
 
@@ -878,8 +953,8 @@ src/serials.o: src/serials.cpp.o
 
 # target to build an object file
 src/serials.cpp.o:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.o
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/src/serials.cpp.o
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.o
 .PHONY : src/serials.cpp.o
 
 src/serials.i: src/serials.cpp.i
@@ -888,8 +963,8 @@ src/serials.i: src/serials.cpp.i
 
 # target to preprocess a source file
 src/serials.cpp.i:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.i
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/src/serials.cpp.i
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.i
 .PHONY : src/serials.cpp.i
 
 src/serials.s: src/serials.cpp.s
@@ -898,8 +973,8 @@ src/serials.s: src/serials.cpp.s
 
 # target to generate assembly for a file
 src/serials.cpp.s:
-	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.s
 	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/stm_com.dir/build.make learn/CMakeFiles/stm_com.dir/src/serials.cpp.s
+	cd /home/jichanun/catin_ws/build && $(MAKE) -f learn/CMakeFiles/ser.dir/build.make learn/CMakeFiles/ser.dir/src/serials.cpp.s
 .PHONY : src/serials.cpp.s
 
 src/subscriber.o: src/subscriber.cpp.o
@@ -938,48 +1013,53 @@ help:
 	@echo "... install/strip"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... earphone_subscriber"
 	@echo "... earp_publisher"
+	@echo "... person_subscriber"
+	@echo "... stm_com"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... _learn_generate_messages_check_deps_expectp"
+	@echo "... velocity_publisher"
+	@echo "... turtlesim_generate_messages_eus"
 	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... install/local"
-	@echo "... std_srvs_generate_messages_eus"
 	@echo "... turtlesim_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_eus"
-	@echo "... person_subscriber"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... turtlesim_generate_messages_lisp"
 	@echo "... learn_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... install/local"
+	@echo "... std_srvs_generate_messages_eus"
+	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... learn_generate_messages"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_cpp"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... _learn_generate_messages_check_deps_earphone"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... ser"
 	@echo "... geometry_msgs_generate_messages_py"
 	@echo "... turtlesim_generate_messages_cpp"
+	@echo "... rebuild_cache"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... sensor_msgs_generate_messages_py"
 	@echo "... turtlesim_generate_messages_py"
 	@echo "... _learn_generate_messages_check_deps_Person"
+	@echo "... learn_generate_messages_eus"
+	@echo "... learn_generate_messages_cpp"
 	@echo "... learn_generate_messages_py"
 	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... _learn_generate_messages_check_deps_vision"
-	@echo "... _learn_generate_messages_check_deps_earphone"
-	@echo "... learn_generate_messages_cpp"
-	@echo "... learn_generate_messages_eus"
-	@echo "... ser"
 	@echo "... test"
 	@echo "... learn_gencpp"
-	@echo "... turtlesim_generate_messages_eus"
-	@echo "... velocity_publisher"
 	@echo "... learn_geneus"
 	@echo "... learn_genlisp"
 	@echo "... learn_generate_messages_nodejs"
-	@echo "... pose_subscriber"
 	@echo "... person_publisher"
+	@echo "... pose_subscriber"
 	@echo "... learn_gennodejs"
 	@echo "... learn_genpy"
-	@echo "... stm_com"
 	@echo "... src/ear_pub.o"
 	@echo "... src/ear_pub.i"
 	@echo "... src/ear_pub.s"

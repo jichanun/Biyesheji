@@ -198,7 +198,7 @@ class PathPlanning():
                 pass
             #print("fbx is :%.2f "%FBx)
             #print("fby is :%.2f "%FBy)
-        return FBx,FBy,FBd
+        return FBx*1.1,FBy*1.2,FBd*1.3
 
     # AUV间避碰调节函数
     def FBFunction(self, da, d):

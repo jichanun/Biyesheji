@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"learn\"
 
-CXX_INCLUDES = -I/home/jichanun/catin_ws/devel/include -I/home/jichanun/catin_ws/src/learn/include -I/home/jichanun/catin_ws/src/learn/include/learn -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp 
+CXX_INCLUDES = -I/home/jichanun/catin_ws/devel/include -I/home/jichanun/catin_ws/src/learn/include -I/home/jichanun/catin_ws/src/learn/include/learn -I/opt/ros/melodic/include -I/opt/ros/melodic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/opencv 
 

@@ -92,12 +92,17 @@ person_subscriber_EXTERNAL_OBJECTS =
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: learn/CMakeFiles/person_subscriber.dir/build.make
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libroscpp.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libxmlrpcpp.so
+/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libserial.so
+/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libcv_bridge.so
+/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libopencv_core.so.3.2.0
+/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.3.2.0
+/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.3.2.0
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/librosconsole.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/librosconsole_log4cxx.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/librosconsole_backend_interface.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libxmlrpcpp.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libroscpp_serialization.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/librostime.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libcpp_common.so
@@ -108,7 +113,6 @@ person_subscriber_EXTERNAL_OBJECTS =
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libpthread.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
-/home/jichanun/catin_ws/devel/lib/learn/person_subscriber: /opt/ros/melodic/lib/libserial.so
 /home/jichanun/catin_ws/devel/lib/learn/person_subscriber: learn/CMakeFiles/person_subscriber.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jichanun/catin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/jichanun/catin_ws/devel/lib/learn/person_subscriber"
 	cd /home/jichanun/catin_ws/build/learn && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/person_subscriber.dir/link.txt --verbose=$(VERBOSE)
