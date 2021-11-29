@@ -9,51 +9,66 @@ from rosgraph.names import anonymous_name
 import rospy
 
 from learn.msg import vision,expectp
-import math
-import numpy as np
-import time
-import serial #导入serial包
-
 import cv2
+import numpy as np 
+import time
+import matplotlib.pyplot as plt
 
-def node():
-    #rospy.init_node("serial_test") #初始化ros节点
-    ser = serial.Serial("/dev/ttyACM0", 115200, timeout=1) #打开串口, 端口号:"/dev/ttyUSB0". 波特率:9600. 延时等待1s
-    print("serial:::::::::::")
-    if ser.isOpen(): #判断串口是否打开
-        print("串口打开成功")
-    else:
-        print("串口打开失败")
-        quit()
-    while not rospy.is_shutdown():
-        ser.write('h'.encode())#发送hello
-        cnt = ser.inWaiting() #等待接受数据
-        if cnt > 0 : #接受数据量大于0
-            rev = ser.read(cnt) #读数据
-            print(len(rev)) #打印
-            break
+font = cv2.FONT_HERSHEY_SIMPLEX
+font1 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 23,
+         }
 
+Act = vision()
+Expect = expectp()
 
-cap = cv2.VideoCapture(0)
-
+plt.show()            
 def ActualInfoCallback(msg):
     #rospy.loginfo("CV received Actual position: X:%f  Y:%f ", msg.x[0], msg.y[0])
-    pass
+    global Act
+    Act = msg
+
+def Position_To_Image(img):
+    cv2.putText (img,( " Target:(%.2f,%.2f)"%(Act.x[0],Act.y[0])) ,(int(Act.x[0])*100-30,(1000-int(Act.y[0]*100))-50),font,0.7,(255,255,255),2)
+    cv2.circle(img,(int (Act.x[0]*100),(1000-int(Act.y[0]*100))),20,(255,0,0),-1)
+    for i in range (2,6):
+        cv2.putText (img,( " ID:%d(%.2f,%.2f)"%(i,Act.x[i],Act.y[i])) ,(int(Act.x[i])*100-30,(1000-int(Act.y[i]*100))+50),font,0.7,(255,255,255),2)
+        cv2.circle(img,(int (Act.x[i]*100),(1000-int(Act.y[i]*100))),20,(0,255,0),-1)
+
 def ExpectInfoCallback(msg):
     #rospy.loginfo("CV received Expected position x:%f y:%f", msg.x[0],msg.y[0])
     pass
+
 def person_subscriber():
 	# ROS节点初始化
     rospy.init_node('CV_sub', anonymous=True)
+    rate = rospy.Rate(100) 
 
 	# 创建一个Subscriber，订阅名为/person_info的topic，注册回调函数personInfoCallback
     rospy.Subscriber("/actual_info", vision, ActualInfoCallback)
     rospy.Subscriber("/expect_info", expectp, ExpectInfoCallback)
-    if cv2.waitKey(1) != 27:
-        flag, img = cap.read()
-        if flag:
-            cv2.imshow("test", img)	# 循环等待回调函数
-    rospy.spin()
+    #plt.plot(x,y,"ob",c='g') 
+    plt.figure(figsize= (10,10))
+
+    while not rospy.is_shutdown():
+        global Act
+        img2 =  np.zeros((1024,1024,3),np.uint8)
+        Position_To_Image(img2)
+        plt.imshow(img2)
+        plt.show(block = False)
+        plt.title("All The Robot's Position \n\n",font1) 
+        plt.title("Green : Friends,Red :Target, Blue :Expect",loc='left') 
+        plt.xlabel("x axis caption",font1) 
+        plt.ylabel("y axis caption",font1) 
+        plt.tick_params(labelsize=23)
+        plt.yticks([1000,800,600,400,200,0],[0,2,4,6,8,10])
+        plt.xticks([0,200,400,600,800,1000],[0,2,4,6,8,10])
+        #plt.gca().invert_yaxis()
+        plt.pause(0.001)
+        plt.clf()
+    rate.sleep()
+    #rospy.spin()
 
 if __name__ == '__main__':
     person_subscriber()
