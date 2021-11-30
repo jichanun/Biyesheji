@@ -6,7 +6,7 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 
-#define HAS_STM32  0
+#define HAS_STM32  1
 
 
 ToRosUnion ReceiveData,TransmitData;
@@ -27,12 +27,18 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
     #if HAS_STM32
     #else
         ToRosUnion temp;
-    for (int i =0;i<6;i++)
+    for (int i =1;i<6;i++)
     {    
         temp.vars.px[i]=TransmitData.vars.px[i]-ReceiveData.vars.px[i];
         temp.vars.py[i]=TransmitData.vars.py[i]-ReceiveData.vars.py[i];
-        ReceiveData.vars.px[i]+=0.005*temp.vars.px[i]*i;
-        ReceiveData.vars.py[i]+=0.003*temp.vars.py[i]*i;
+        if (i == 2||i ==5)
+        {
+            temp.vars.px[i]*=1.5;
+            temp.vars.py[i]*=1.5;
+        }
+        ReceiveData.vars.px[i]+=0.01*temp.vars.px[i];
+        ReceiveData.vars.py[i]+=0.02*temp.vars.py[i];
+
         //乘i表示每个机器人的运动速度不尽相同，这样不会使机器人叠加到一起
     }
     #endif

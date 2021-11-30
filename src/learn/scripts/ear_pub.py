@@ -100,7 +100,7 @@ def  FormationInit(act):
     Fomat.x[3]=Center-AveError*0.5
     Fomat.x[4]=Center+AveError*0.5
     Fomat.x[5]=Center+AveError*1.5
-    for k in range (2,5):
+    for k in range (2,6):
         Fomat.y[k]=1
 def FormationChange(act):
     num=0
