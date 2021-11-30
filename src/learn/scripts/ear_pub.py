@@ -35,19 +35,23 @@ Fomat=expectp()#机器人的虚拟期望位置
 
 FormatInitFlag=0 #初始化参数
 Master = [ 1,1] #虚拟结构质点
-
+SurrondFlag=0 #围捕初始化参数
 def ActualInfoCallback(msg):
         #rospy.loginfo("Caculater received  actual Info: X:%f  Y:%f ",  msg.x[0], msg.y[0])
     #Step 1 : 计算距离并判断模式
     Mode = ModeSwitch (msg)  
     global FormatInitFlag
+    global SurrondFlag
     if (Mode==1):#目前是编队模式
         if (FormatInitFlag==0):#编队初始化
             FormationInit(msg)
             FormatInitFlag=1
         FormationChange(msg)
     if (Mode==2):#目前是围捕模式
-        pass
+        if(SurrondFlag==0):
+            SurrondInit(msg)
+            SurrondFlag=1
+
 
 
     Caculate(msg,Mode)
@@ -112,7 +116,27 @@ def FormationChange(act):
         for j in range (2,6):
             Fomat.y[j]=Master[1]
 
+def SurrondInit(act):
+    #函数用于找到编队参考点，给定围捕方向
+    #Step 1 : 围捕方向
+    #Avex = (act.x[2]+act.x[3]+act.x[4]+act.x[5])/4 - act.x[0]
+    #Avey = (act.y[2]+act.y[3]+act.y[4]+act.y[5])/4 - act.y[0]
+    #if (abs(Avex)>=abs(Avey)):#从X方向过来
+    #    if Avex>0:#机器人从X正来
+    #        x=1
+    #else :#从Y方向过来
+    #    x=2 
+    global Fomat
 
+    Fomat.x[2]=act.x[0]-1.5
+    Fomat.x[3]=act.x[0]-0.5
+    Fomat.x[4]=act.x[0]+0.5
+    Fomat.x[5]=act.x[0]+1.5
+
+    Fomat.y[2]=act.y[0]
+    Fomat.y[3]=act.y[0]+0.7
+    Fomat.y[4]=act.y[0]+0.7
+    Fomat.y[5]=act.y[0]
         
     
 
@@ -132,10 +156,10 @@ def Caculate(msg,mode):
                     k+=1
                 QJBL.F[str(k)].setFLocation(msg.x[0],msg.y[0],1,0,0)
         #QJBL.T.setTLocation(msg.x[0],msg.x[0],1,0,0)
-        if (mode==1):
-            QJBL.T.setTLocation(Fomat.x[i],Fomat.y[i],1,0,0)
-        elif (mode==2):
-            QJBL.T.setTLocation(msg.x[0],msg.y[0],1,0,0)
+        #if (mode==1):
+        QJBL.T.setTLocation(Fomat.x[i],Fomat.y[i],1,0,0)
+        #elif (mode==2):
+        #    QJBL.T.setTLocation(msg.x[0],msg.y[0],1,0,0)
         #print("robot %d at  %.2f  , %.2f ,which want to go to %.2f , %.2f "%(i,X,Y,Fomat.x[i],Fomat.y[i]))
         PP.APF(X,Y,D,0, 0, 0, QJBL.T.nowTX,QJBL.T.nowTY , 1)
         exp.x[i] = QJBL.S.idealX
