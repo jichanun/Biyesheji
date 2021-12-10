@@ -134,8 +134,8 @@ def SurrondInit(act):
     Fomat.x[5]=act.x[0]+1.5
 
     Fomat.y[2]=act.y[0]
-    Fomat.y[3]=act.y[0]+0.7
-    Fomat.y[4]=act.y[0]+0.7
+    Fomat.y[3]=act.y[0]-0.7
+    Fomat.y[4]=act.y[0]-0.7
     Fomat.y[5]=act.y[0]
         
     
