@@ -1,0 +1,16 @@
+<package>
+  <description brief="write">
+
+     write
+
+  </description>
+  <author>jichanun</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/write</url>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="cv_bridge"/>
+
+</package>

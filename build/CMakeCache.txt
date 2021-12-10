@@ -288,6 +288,12 @@ _gtest_INCLUDES:FILEPATH=/usr/include/gtest/gtest.h
 _gtest_SOURCES:FILEPATH=/usr/src/gtest/src/gtest.cc
 
 //Value Computed by CMake
+amphibious_BINARY_DIR:STATIC=/home/jichanun/catin_ws/build/amphibious
+
+//Value Computed by CMake
+amphibious_SOURCE_DIR:STATIC=/home/jichanun/catin_ws/src/amphibious
+
+//Value Computed by CMake
 beginner_tutorials_BINARY_DIR:STATIC=/home/jichanun/catin_ws/build/beginner_tutorials
 
 //Value Computed by CMake
@@ -434,6 +440,12 @@ std_srvs_DIR:PATH=/opt/ros/melodic/share/std_srvs/cmake
 
 //The directory containing a CMake configuration file for turtlesim.
 turtlesim_DIR:PATH=/opt/ros/melodic/share/turtlesim/cmake
+
+//Value Computed by CMake
+write_BINARY_DIR:STATIC=/home/jichanun/catin_ws/build/write
+
+//Value Computed by CMake
+write_SOURCE_DIR:STATIC=/home/jichanun/catin_ws/src/write
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/melodic/share/xmlrpcpp/cmake

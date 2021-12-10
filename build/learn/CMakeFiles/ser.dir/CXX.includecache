@@ -6,38 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/jichanun/catin_ws/devel/include/learn/expectp.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/home/jichanun/catin_ws/devel/include/learn/vision.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
 /home/jichanun/catin_ws/src/learn/include/learn/serials.hpp
 stdlib.h
 -
@@ -268,10 +236,6 @@ boost/make_shared.hpp
 cstddef
 -
 memory
--
-
-/opt/ros/melodic/include/ros/message_operations.h
-ostream
 -
 
 /opt/ros/melodic/include/ros/message_traits.h

@@ -1,0 +1,7 @@
+<launch>
+
+    <node pkg="write" type="write.py" name="writer" output="screen" /> 
+
+</launch>
+
+

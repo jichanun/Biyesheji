@@ -6,7 +6,7 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 
-#define HAS_STM32  1
+#define HAS_STM32  0
 
 
 ToRosUnion ReceiveData,TransmitData;
