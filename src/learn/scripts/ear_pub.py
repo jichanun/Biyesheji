@@ -8,6 +8,7 @@
 # 该例程将发布/person_info话题，自定义消息类型learning_topic::Person
 
 from logging import error
+from traceback import print_list
 import PathPlanning
 import PathPlanningWB
 import QJBL
@@ -24,7 +25,7 @@ import rospy
 from learn.msg import earphone,vision,expectp
 
 EDGEDISTANCE = 6  #模式切换时距离
-FORMATDISTANCE = -0.3 #编队前进距离
+FORMATDISTANCE = (0,0,0.7,-0.3,-0.3,-1.3) #编队前进距离
 PP = PathPlanning.PathPlanning(5, 1, 0.5, 0.2, 0.5, 3, 0, 0.5, 1, 0)
 PPW= PathPlanningWB.PathPlanning(5, 1, 0.5, 0.2, 0.5, 3, 0, 0.5, 1, 0)
 
@@ -93,28 +94,43 @@ def ModeSwitch(act):
 
 def  FormationInit(act):
     #函数用于找到各机器人的中心作为虚拟结构质点，并计算最大误差作为最大队形
-    Center = (act.x[2]+act.x[3]+act.x[4]+act.x[5])/4
-    AveError = 0
+    Centerx = (act.x[2]+act.x[3]+act.x[4]+act.x[5])/4
+    Centery = (act.y[2]+act.y[3]+act.y[4]+act.y[5])/4
+    AveErrorx = 0
+    AveErrory = 0
     for j in range(2,6):
-        Errorx = act.x[j]-Center
-        AveError+=abs(Errorx)
-    AveError=AveError /4
+        Errorx = act.x[j]-Centerx
+        AveErrorx+=abs(Errorx)
+        Errory = act.y[i]-Centery
+        AveErrory +=abs(Errory)
+    AveErrorx=AveErrorx /4
+    AveErrory=AveErrory/4
     global Fomat
-    Fomat.x[2]=Center-AveError*1.5
-    Fomat.x[3]=Center-AveError*0.5
-    Fomat.x[4]=Center+AveError*0.5
-    Fomat.x[5]=Center+AveError*1.5
-    for k in range (2,6):
-        Fomat.y[k]=1
+    Fomat.x[2]=Centerx
+    Fomat.x[3]=Centerx-AveErrorx*2
+    Fomat.x[4]=Centerx+AveErrorx*2
+    Fomat.x[5]=Centerx
+
+    Fomat.y[2]=Centery+AveErrory*2
+    Fomat.y[3]=Centery
+    Fomat.y[4]=Centery
+    Fomat.y[5]=Centery-AveErrory*2
+
+
+
+
 def FormationChange(act):
     num=0
     for i in range (2,6):
-        if ((act.y[i]-Master[1])>FORMATDISTANCE):
+        if ((act.y[i]-Master[1])>FORMATDISTANCE[i]):
             num +=1
     if (num > 2):#三个机器人都到位了
         Master[1]+=1
-        for j in range (2,6):
-            Fomat.y[j]=Master[1]
+        Fomat.y[2]=Master[1]+1
+        Fomat.y[3]=Master[1]
+        Fomat.y[4]=Master[1]
+        Fomat.y[5]=Master[1]-1
+        
 
 def SurrondInit(act):
     #函数用于找到编队参考点，给定围捕方向
@@ -128,15 +144,15 @@ def SurrondInit(act):
     #    x=2 
     global Fomat
 
-    Fomat.x[2]=act.x[0]-1.5
-    Fomat.x[3]=act.x[0]-0.5
-    Fomat.x[4]=act.x[0]+0.5
-    Fomat.x[5]=act.x[0]+1.5
+    Fomat.x[2]=act.x[0]
+    Fomat.x[3]=act.x[0]-1.5
+    Fomat.x[4]=act.x[0]+1.5
+    Fomat.x[5]=act.x[0]
 
-    Fomat.y[2]=act.y[0]
-    Fomat.y[3]=act.y[0]-0.7
-    Fomat.y[4]=act.y[0]-0.7
-    Fomat.y[5]=act.y[0]
+    Fomat.y[2]=act.y[0]+1.5
+    Fomat.y[3]=act.y[0]
+    Fomat.y[4]=act.y[0]
+    Fomat.y[5]=act.y[0]-1.5
         
     
 
