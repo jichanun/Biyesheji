@@ -23,6 +23,9 @@ font1 = {'family': 'Times New Roman',
 Act = vision()
 Expect = expectp()
 
+Plotx=[]
+Ploty=[]
+
 plt.show()            
 def ActualInfoCallback(msg):
     #rospy.loginfo("CV received Actual position: X:%f  Y:%f ", msg.x[0], msg.y[0])
@@ -46,7 +49,21 @@ def ExpectInfoCallback(msg):
     rospy.loginfo("CV received Expected position x:%f y:%f", msg.x[0],msg.y[0])
     global Expect
     Expect = msg
+    aver=0
+    for i in range (2,6):
+        aver += Act.y[i]
+    aver /=4
+    maxy = abs(Act.y[2]-aver)
+    for i in range (3,6):
+        temp = abs(Act.y[i]-aver)
+        if temp > maxy :
+            maxy=temp
+    
+    print ("aver = = = = = = == =%.2f \n\n\n\n\n\n\n\n\n\n\n\n",aver)
+    Plotx.append(aver)
+    Ploty.append ( maxy)
 
+    
 def person_subscriber():
 	# ROS节点初始化
     rospy.init_node('CV_sub', anonymous=True)
@@ -61,6 +78,7 @@ def person_subscriber():
     while not rospy.is_shutdown():
         global Act
         global Expect
+        '''
         img2 =  np.zeros((1024,1024,3),np.uint8)
         Position_To_Image(img2)
         Expect_To_Image(img2)
@@ -74,8 +92,18 @@ def person_subscriber():
         plt.yticks([1000,800,600,400,200,0],[0,2,4,6,8,10])
         plt.xticks([0,200,400,600,800,1000],[0,2,4,6,8,10])
         #plt.gca().invert_yaxis()
-        plt.pause(0.001)
-        plt.clf()
+'''
+        plt.title("matplot")
+        plt.xlabel("x")
+        plt.ylabel("y")
+        plt.plot(Plotx,Ploty)
+        plt.show()
+
+
+        #plt.pause(0.001)
+        #plt.clf()
+
+
     rate.sleep()
     #rospy.spin()
 
