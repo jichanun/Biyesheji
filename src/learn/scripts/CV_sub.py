@@ -53,9 +53,12 @@ def ExpectInfoCallback(msg):
     for i in range (2,6):
         aver += Act.y[i]
     aver /=4
-    maxy = abs(Act.y[2]-aver)
+    maxy = abs(Act.y[2]-1-aver)
     for i in range (3,6):
-        temp = abs(Act.y[i]-aver)
+        if i == 5:
+            temp = abs(Act.y[i]+1-aver)
+        else :
+            temp = abs(Act.y[i]-aver)
         if temp > maxy :
             maxy=temp
     
