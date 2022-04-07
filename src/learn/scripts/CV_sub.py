@@ -72,7 +72,7 @@ def ExpectInfoCallback(msg):
         if temp > maxy :
             maxy=temp
     
-    print ("aver = = = = = = == =%.2f \n\n\n\n\n\n\n\n\n\n\n",aver)
+    print ("aver = = = = = = == =",aver)
     print(len(PlotExp))
 
     Plotx.append(aver)

@@ -6,7 +6,7 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 
-#define HAS_STM32  0
+#define HAS_STM32  1
 
 
 ToRosUnion ReceiveData,TransmitData;
@@ -20,7 +20,7 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
         TransmitData.vars.px[i]=msg->x[i];
         TransmitData.vars.py[i]=msg->y[i];
     }
-    TransmitData.vars.status=10;
+    TransmitData.vars.status=2;
     ROS_INFO ("The expeted position of all the robots are:");
     for (int i =0;i<6;i++)
         ROS_INFO ("Robot ID : %d x: %.2f ,y : %.2f ",i, msg->x[i],msg->y[i]);
