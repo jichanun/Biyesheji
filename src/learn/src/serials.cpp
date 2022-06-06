@@ -5,7 +5,7 @@
 #include "serials.hpp"
 #include "learn/vision.h"
 #include "learn/expectp.h"
-
+#include"time.h"
 #define HAS_STM32  0
 
 
@@ -36,8 +36,12 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
             temp.vars.px[i]*=1.5;
             temp.vars.py[i]*=1.5;
         }
-        ReceiveData.vars.px[i]+=0.01*temp.vars.px[i];
-        ReceiveData.vars.py[i]+=0.02*temp.vars.py[i];
+
+        int num = rand() % 200 -99;
+
+
+        ReceiveData.vars.px[i]+=0.005*temp.vars.px[i]+(float)num/2000;
+        ReceiveData.vars.py[i]+=0.01*temp.vars.py[i]+(float)num/2000;
 
         //乘i表示每个机器人的运动速度不尽相同，这样不会使机器人叠加到一起
     }
@@ -63,6 +67,7 @@ int main(int argc, char** argv)
     sp.setBaudrate(115200);
     //串口设置timeout
     sp.setTimeout(to);
+    srand((unsigned int)time(0));
  #if HAS_STM32
     try
     {
