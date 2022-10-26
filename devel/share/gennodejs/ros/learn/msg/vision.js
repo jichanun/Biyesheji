@@ -26,13 +26,13 @@ class vision {
         this.x = initObj.x
       }
       else {
-        this.x = new Array(6).fill(0);
+        this.x = new Array(7).fill(0);
       }
       if (initObj.hasOwnProperty('y')) {
         this.y = initObj.y
       }
       else {
-        this.y = new Array(6).fill(0);
+        this.y = new Array(7).fill(0);
       }
     }
   }
@@ -40,17 +40,17 @@ class vision {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type vision
     // Check that the constant length array field [x] has the right length
-    if (obj.x.length !== 6) {
-      throw new Error('Unable to serialize array field x - length must be 6')
+    if (obj.x.length !== 7) {
+      throw new Error('Unable to serialize array field x - length must be 7')
     }
     // Serialize message field [x]
-    bufferOffset = _arraySerializer.float32(obj.x, buffer, bufferOffset, 6);
+    bufferOffset = _arraySerializer.float32(obj.x, buffer, bufferOffset, 7);
     // Check that the constant length array field [y] has the right length
-    if (obj.y.length !== 6) {
-      throw new Error('Unable to serialize array field y - length must be 6')
+    if (obj.y.length !== 7) {
+      throw new Error('Unable to serialize array field y - length must be 7')
     }
     // Serialize message field [y]
-    bufferOffset = _arraySerializer.float32(obj.y, buffer, bufferOffset, 6);
+    bufferOffset = _arraySerializer.float32(obj.y, buffer, bufferOffset, 7);
     return bufferOffset;
   }
 
@@ -59,14 +59,14 @@ class vision {
     let len;
     let data = new vision(null);
     // Deserialize message field [x]
-    data.x = _arrayDeserializer.float32(buffer, bufferOffset, 6)
+    data.x = _arrayDeserializer.float32(buffer, bufferOffset, 7)
     // Deserialize message field [y]
-    data.y = _arrayDeserializer.float32(buffer, bufferOffset, 6)
+    data.y = _arrayDeserializer.float32(buffer, bufferOffset, 7)
     return data;
   }
 
   static getMessageSize(object) {
-    return 48;
+    return 56;
   }
 
   static datatype() {
@@ -76,14 +76,14 @@ class vision {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'd75c2d0ec0230fe2d3e3aa96f78888c9';
+    return 'a0ae65e34517895bd1b390204c93e42d';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    float32[6] x
-    float32[6] y
+    float32[7] x
+    float32[7] y
     
     `;
   }
@@ -98,14 +98,14 @@ class vision {
       resolved.x = msg.x;
     }
     else {
-      resolved.x = new Array(6).fill(0)
+      resolved.x = new Array(7).fill(0)
     }
 
     if (msg.y !== undefined) {
       resolved.y = msg.y;
     }
     else {
-      resolved.y = new Array(6).fill(0)
+      resolved.y = new Array(7).fill(0)
     }
 
     return resolved;

@@ -6,7 +6,7 @@
 #include "learn/vision.h"
 #include "learn/expectp.h"
 #include"time.h"
-#define HAS_STM32  0
+#define HAS_STM32  1 
 
 
 ToRosUnion ReceiveData,TransmitData;
@@ -16,13 +16,13 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
     //ROS_INFO("subcribe person info: name:%s, age:%d,sex:%d", msg->name.c_str(), msg->age,msg->sex);
     TransmitData.vars.data0=20000;
     TransmitData.vars.data1=0;
-    for (int i =0;i<6;i++){
+    for (int i =0;i<7;i++){
         TransmitData.vars.px[i]=msg->x[i];
         TransmitData.vars.py[i]=msg->y[i];
     }
     TransmitData.vars.status=2;
     ROS_INFO ("The expeted position of all the robots are:");
-    for (int i =0;i<6;i++)
+    for (int i =0;i<7;i++)
         ROS_INFO ("Robot ID : %d x: %.2f ,y : %.2f ",i, msg->x[i],msg->y[i]);
     #if HAS_STM32
     #else
@@ -102,15 +102,15 @@ int main(int argc, char** argv)
 #if  HAS_STM32
         if(n!=0)
         {
-            uint8_t buffer[60];
-            uint8_t sendbuf[60];
+            uint8_t buffer[68];
+            uint8_t sendbuf[68];
             //读出数据
             n = sp.read(buffer, n);
-            for (int i =0;i<57;i++)
+            for (int i =0;i<65;i++)
                 ReceiveData.buf[i]=buffer[i];
             
             printf("Received from STM32 : DATA0 :%.2f  data1 %.2f\n ",ReceiveData.vars.data0,ReceiveData.vars.data1);
-            for (int i=0;i<6;i++)
+            for (int i=0;i<7;i++)
             {
                 ReceiveData.vars.px[i]/=1000;
                 ReceiveData.vars.py[i]/=1000;
@@ -120,7 +120,7 @@ int main(int argc, char** argv)
 
             //向节点发送实际位置
             learn::vision Act;
-            for (int i=0;i<6;i++){
+            for (int i=0;i<7;i++){
                 Act.x[i]=ReceiveData.vars.px[i];
                 Act.y[i]=ReceiveData.vars.py[i];
                 
@@ -128,9 +128,9 @@ int main(int argc, char** argv)
             Acutal.publish(Act);
 
             //写入数据
-            for (int k=0;k<57;k++)
+            for (int k=0;k<65;k++)
                 sendbuf[k]=TransmitData.buf[k];
-            sp.write(sendbuf, 57);
+            sp.write(sendbuf, 65);
 
             /*
             for(int i=0; i<n; i++)

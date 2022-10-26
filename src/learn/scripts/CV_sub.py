@@ -38,22 +38,24 @@ def ActualInfoCallback(msg):
 def Position_To_Image(img):
     cv2.putText (img,( " Target:(%.2f,%.2f)"%(Act.x[0],Act.y[0])) ,(int(Act.x[0])*100-30,(1000-int(Act.y[0]*100))-50),font,0.7,(255,255,255),2)
     cv2.circle(img,(int (Act.x[0]*100),(1000-int(Act.y[0]*100))),20,(255,0,0),-1)
-    for i in range (2,6):
+    for i in range (1,7):
         cv2.putText (img,( " ID:%d(%.2f,%.2f)"%(i,Act.x[i],Act.y[i])) ,(int(Act.x[i])*100-30,(1000-int(Act.y[i]*100))+50),font,0.7,(255,255,255),2)
         cv2.circle(img,(int (Act.x[i]*100),(1000-int(Act.y[i]*100))),20,(0,255,0),-1)
 
 def Expect_To_Image(img):
-    for i in range (2,6):
+    for i in range (1,7):
         #cv2.putText (img,( " ID:%d(%.2f,%.2f)"%(i,Expect.x[i],Expect.y[i])) ,(int(Expect.x[i]*100)-30,(1000-int(Expect.y[i]*100))+50),font,0.7,(255,255,255),2)
         cv2.circle(img,(int (Expect.x[i]*100),(1000-int(Expect.y[i]*100))),10,(0,0,255),-1)
         cv2.line(img,(int (Act.x[i]*100),(1000-int(Act.y[i]*100))),(int (Expect.x[i]*100),(1000-int(Expect.y[i]*100))),(0,0,255),2)
 
 def Path_plot(img):
     for i in range (len(PlotAct)-1) :
+        cv2.line(img,(int (PlotAct[i+1].x[1]*100),(1000-int(PlotAct[i+1].y[1]*100))),(int (PlotAct[i+1].x[1]*100),(1000-int(PlotAct[i+1].y[1]*100))),(128,0,255),5)
         cv2.line(img,(int (PlotAct[i+1].x[2]*100),(1000-int(PlotAct[i+1].y[2]*100))),(int (PlotAct[i+1].x[2]*100),(1000-int(PlotAct[i+1].y[2]*100))),(0,255,255),5)
         cv2.line(img,(int (PlotAct[i+1].x[3]*100),(1000-int(PlotAct[i+1].y[3]*100))),(int (PlotAct[i+1].x[3]*100),(1000-int(PlotAct[i+1].y[3]*100))),(255,255,0),5)
         cv2.line(img,(int (PlotAct[i+1].x[4]*100),(1000-int(PlotAct[i+1].y[4]*100))),(int (PlotAct[i+1].x[4]*100),(1000-int(PlotAct[i+1].y[4]*100))),(255,0,255),5)
-        cv2.line(img,(int (PlotAct[i+1].x[5]*100),(1000-int(PlotAct[i+1].y[5]*100))),(int (PlotAct[i+1].x[5]*100),(1000-int(PlotAct[i+1].y[5]*100))),(255,255,255),5)
+        cv2.line(img,(int (PlotAct[i+1].x[5]*100),(1000-int(PlotAct[i+1].y[5]*100))),(int (PlotAct[i+1].x[5]*100),(1000-int(PlotAct[i+1].y[5]*100))),(255,0,0),5)
+        cv2.line(img,(int (PlotAct[i+1].x[6]*100),(1000-int(PlotAct[i+1].y[6]*100))),(int (PlotAct[i+1].x[6]*100),(1000-int(PlotAct[i+1].y[6]*100))),(255,255,255),5)
 
 def ExpectInfoCallback(msg):
     rospy.loginfo("CV received Expected position x:%f y:%f", msg.x[0],msg.y[0])

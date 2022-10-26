@@ -41,10 +41,10 @@ struct expectp_
 
 
 
-   typedef boost::array<float, 6>  _x_type;
+   typedef boost::array<float, 7>  _x_type;
   _x_type x;
 
-   typedef boost::array<float, 6>  _y_type;
+   typedef boost::array<float, 7>  _y_type;
   _y_type y;
 
 
@@ -134,12 +134,12 @@ struct MD5Sum< ::learn::expectp_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "d75c2d0ec0230fe2d3e3aa96f78888c9";
+    return "a0ae65e34517895bd1b390204c93e42d";
   }
 
   static const char* value(const ::learn::expectp_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xd75c2d0ec0230fe2ULL;
-  static const uint64_t static_value2 = 0xd3e3aa96f78888c9ULL;
+  static const uint64_t static_value1 = 0xa0ae65e34517895bULL;
+  static const uint64_t static_value2 = 0xd1b390204c93e42dULL;
 };
 
 template<class ContainerAllocator>
@@ -158,8 +158,8 @@ struct Definition< ::learn::expectp_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "float32[6] x\n"
-"float32[6] y\n"
+    return "float32[7] x\n"
+"float32[7] y\n"
 ;
   }
 

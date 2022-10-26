@@ -8,14 +8,14 @@
 
 {
 	/* data */
-	uint8_t buf [57];
+	uint8_t buf [65];
 	struct 
 	{
 		/* data */
 		float data0;
 		float data1;
-		float px[6];
-		float py[6];
+		float px[7];
+		float py[7];
 		uint8_t status ; 
 	}vars;
 	

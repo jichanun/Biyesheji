@@ -8,14 +8,14 @@ import struct
 
 
 class vision(genpy.Message):
-  _md5sum = "d75c2d0ec0230fe2d3e3aa96f78888c9"
+  _md5sum = "a0ae65e34517895bd1b390204c93e42d"
   _type = "learn/vision"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """float32[6] x
-float32[6] y
+  _full_text = """float32[7] x
+float32[7] y
 """
   __slots__ = ['x','y']
-  _slot_types = ['float32[6]','float32[6]']
+  _slot_types = ['float32[7]','float32[7]']
 
   def __init__(self, *args, **kwds):
     """
@@ -35,12 +35,12 @@ float32[6] y
       super(vision, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
       if self.x is None:
-        self.x = [0.] * 6
+        self.x = [0.] * 7
       if self.y is None:
-        self.y = [0.] * 6
+        self.y = [0.] * 7
     else:
-      self.x = [0.] * 6
-      self.y = [0.] * 6
+      self.x = [0.] * 7
+      self.y = [0.] * 7
 
   def _get_types(self):
     """
@@ -54,8 +54,8 @@ float32[6] y
     :param buff: buffer, ``StringIO``
     """
     try:
-      buff.write(_get_struct_6f().pack(*self.x))
-      buff.write(_get_struct_6f().pack(*self.y))
+      buff.write(_get_struct_7f().pack(*self.x))
+      buff.write(_get_struct_7f().pack(*self.y))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -69,11 +69,11 @@ float32[6] y
     try:
       end = 0
       start = end
-      end += 24
-      self.x = _get_struct_6f().unpack(str[start:end])
+      end += 28
+      self.x = _get_struct_7f().unpack(str[start:end])
       start = end
-      end += 24
-      self.y = _get_struct_6f().unpack(str[start:end])
+      end += 28
+      self.y = _get_struct_7f().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -102,11 +102,11 @@ float32[6] y
     try:
       end = 0
       start = end
-      end += 24
-      self.x = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=6)
+      end += 28
+      self.x = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=7)
       start = end
-      end += 24
-      self.y = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=6)
+      end += 28
+      self.y = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=7)
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -115,9 +115,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6f = None
-def _get_struct_6f():
-    global _struct_6f
-    if _struct_6f is None:
-        _struct_6f = struct.Struct("<6f")
-    return _struct_6f
+_struct_7f = None
+def _get_struct_7f():
+    global _struct_7f
+    if _struct_7f is None:
+        _struct_7f = struct.Struct("<7f")
+    return _struct_7f
