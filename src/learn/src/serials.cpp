@@ -21,9 +21,11 @@ void ExpectCallback(const learn::expectp::ConstPtr& msg)
         TransmitData.vars.py[i]=msg->y[i];
     }
     TransmitData.vars.status=2;
+    /*//显示期望坐标
     ROS_INFO ("The expeted position of all the robots are:");
     for (int i =0;i<7;i++)
         ROS_INFO ("Robot ID : %d x: %.2f ,y : %.2f ",i, msg->x[i],msg->y[i]);
+    */
     #if HAS_STM32
     #else
         ToRosUnion temp;
@@ -161,7 +163,7 @@ int main(int argc, char** argv)
                 
             }
             printf("All actual position are:\n");
-            for (int k=0;k<6;k++)
+            for (int k=0;k<7;k++)
                 printf("Number : %d  , X:  %.2f ,   Y :  %.2f\n", k , Act.x[k],Act.y[k]);
             Acutal.publish(Act);
 #endif

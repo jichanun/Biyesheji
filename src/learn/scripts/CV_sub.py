@@ -44,7 +44,7 @@ def ActualInfoCallback(msg):
     Act = msg
     PlotAct.append(Act)
     #rostime = rospy.Time.to_sec(self)
-    print(rostime)
+    #print(rostime)
     #rostimesec = rostime.
     with open(filename, 'a') as file_object:
         file_object.write("%s %f %f %f %f %f %f %f %f %f %f %f %f %f %f \n" %(rostime,Act.x[0],Act.y[0],Act.x[1],Act.y[1],
@@ -75,7 +75,7 @@ def Path_plot(img):
         cv2.line(img,(int (PlotAct[i+1].x[6]*100),(1000-int(PlotAct[i+1].y[6]*100))),(int (PlotAct[i+1].x[6]*100),(1000-int(PlotAct[i+1].y[6]*100))),(255,255,255),5)
 
 def ExpectInfoCallback(msg):
-    rospy.loginfo("CV received Expected position x:%f y:%f", msg.x[0],msg.y[0])
+    #rospy.loginfo("CV received Expected position x:%f y:%f", msg.x[0],msg.y[0])
     global Expect
     Expect = msg
     aver=0
@@ -91,7 +91,7 @@ def ExpectInfoCallback(msg):
         if temp > maxy :
             maxy=temp
     
-    print ("aver = = = = = = == =",aver)
+    #print ("aver = = = = = = == =",aver)
     print(len(PlotExp))
 #TODO:  把这个追加同时写到本地文件里面去
     Plotx.append(aver)
@@ -116,8 +116,9 @@ def person_subscriber():
         global Act
         global Expect
         img2 =  np.zeros((1024,1024,3),np.uint8)
+        #img2[0:1023,0:1023]=255#白图片
         Position_To_Image(img2)
-        Expect_To_Image(img2)
+        #Expect_To_Image(img2)
         Path_plot(img2)
         plt.imshow(img2)
         plt.show(block = False)
