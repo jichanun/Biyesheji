@@ -27,13 +27,30 @@ Plotx=[]
 Ploty=[]
 PlotAct=[]
 PlotExp=[]
+rostime=0
+filename = '/home/jichanun/py/Actual.txt'
 
-plt.show()            
+plt.show()   
+
+def doMsg(event):
+    global rostime
+    rostime=str(event.current_real)
+
+
 def ActualInfoCallback(msg):
     #rospy.loginfo("CV received Actual position: X:%f  Y:%f ", msg.x[0], msg.y[0])
     global Act
+    global rostime
     Act = msg
     PlotAct.append(Act)
+    #rostime = rospy.Time.to_sec(self)
+    print(rostime)
+    #rostimesec = rostime.
+    with open(filename, 'a') as file_object:
+        file_object.write("%s %f %f %f %f %f %f %f %f %f %f %f %f %f %f \n" %(rostime,Act.x[0],Act.y[0],Act.x[1],Act.y[1],
+                                            Act.x[2],Act.y[2],Act.x[3],Act.y[3],Act.x[4],Act.y[4],Act.x[5],Act.y[5],Act.x[6],Act.y[6]) )
+
+
 
 def Position_To_Image(img):
     cv2.putText (img,( " Target:(%.2f,%.2f)"%(Act.x[0],Act.y[0])) ,(int(Act.x[0])*100-30,(1000-int(Act.y[0]*100))-50),font,0.7,(255,255,255),2)
@@ -76,11 +93,12 @@ def ExpectInfoCallback(msg):
     
     print ("aver = = = = = = == =",aver)
     print(len(PlotExp))
-
+#TODO:  把这个追加同时写到本地文件里面去
     Plotx.append(aver)
     Ploty.append ( maxy)
     PlotExp.append(Expect)
     
+
 def person_subscriber():
 	# ROS节点初始化
     rospy.init_node('CV_sub', anonymous=True)
@@ -91,6 +109,8 @@ def person_subscriber():
     rospy.Subscriber("/expect_info", expectp, ExpectInfoCallback)
     #plt.plot(x,y,"ob",c='g') 
     plt.figure(figsize= (10,10))
+    #计时器
+    rospy.Timer(rospy.Duration(0.1),doMsg)
 
     while not rospy.is_shutdown():
         global Act
@@ -111,6 +131,7 @@ def person_subscriber():
         #plt.gca().invert_yaxis()
         plt.pause(0.001)
         plt.clf()
+    
     rate.sleep()
     rospy.spin()
 '''
